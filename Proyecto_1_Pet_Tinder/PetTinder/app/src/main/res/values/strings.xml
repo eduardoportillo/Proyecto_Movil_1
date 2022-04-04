@@ -2,4 +2,6 @@
     <string name="app_name">PetTinder</string>
     <string name="me_gusta">Me Gusta</string>
     <string name="jake">Jake</string>
+    <string name="simbolReturn"><![CDATA[<]]></string>
+    <string name="volver">volver</string>
 </resources>
