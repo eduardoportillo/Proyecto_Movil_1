@@ -1,9 +1,10 @@
-package com.example.pettinder
+package com.example.pettinder.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.pettinder.R
 
 class DescriptionPetActivity : AppCompatActivity() {
 
@@ -23,8 +24,9 @@ class DescriptionPetActivity : AppCompatActivity() {
         btnVolverMain.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
 
-            //para enviar datos de Activity 1 al 2
-            //intent.putExtra("varName", nombre)
+            //para recibir datos de Activity 1 al 2
+            //val nombre = intent.getStringExtra("varNombre")
+            //lblBienvenido.text = "Bienvenido" + nombre
 
             startActivity(intent)
         }

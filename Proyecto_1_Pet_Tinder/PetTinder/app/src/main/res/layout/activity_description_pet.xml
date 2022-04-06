@@ -5,7 +5,7 @@
     android:id="@+id/btnReturnMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DescriptionPetActivity">
+    tools:context=".activities.DescriptionPetActivity">
 
     <Button
         android:id="@+id/btnVolverMain"

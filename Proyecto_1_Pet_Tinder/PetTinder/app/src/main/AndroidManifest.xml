@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetTinder">
         <activity
-            android:name=".DescriptionPetActivity"
+            android:name=".activities.DescriptionPetActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
