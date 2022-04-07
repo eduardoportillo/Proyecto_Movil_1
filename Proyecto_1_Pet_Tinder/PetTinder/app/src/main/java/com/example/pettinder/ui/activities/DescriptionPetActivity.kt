@@ -1,5 +1,6 @@
 package com.example.pettinder.ui.activities
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -49,6 +50,25 @@ class DescriptionPetActivity : AppCompatActivity() {
 
     private fun setupEventListener() {
         binding.btnVolverMain.setOnClickListener { finish() }
+
+
+        binding.btnGaleriaImg1.setOnClickListener{
+            val intent = Intent(this, FotoGrandeActivities::class.java)
+            intent.putExtra("varGaleria", mascota.keyDrawableGaleria1)
+            startActivity(intent)
+        }
+
+        binding.btnGaleriaImg2.setOnClickListener{
+            val intent = Intent(this, FotoGrandeActivities::class.java)
+            intent.putExtra("varGaleria", mascota.keyDrawableGaleria2)
+            startActivity(intent)
+        }
+
+        binding.btnGaleriaImg3.setOnClickListener{
+            val intent = Intent(this, FotoGrandeActivities::class.java)
+            intent.putExtra("varGaleria", mascota.keyDrawableGaleria3)
+            startActivity(intent)
+        }
 
     }
 }
