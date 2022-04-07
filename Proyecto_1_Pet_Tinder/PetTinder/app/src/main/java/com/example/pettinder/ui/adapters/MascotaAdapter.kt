@@ -1,6 +1,7 @@
 package com.example.pettinder.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,8 @@ class MascotaAdapter
     (
     val data: ArrayList<Mascota>,
     val listener: MascotaListEventListener,
-    val contex: Context
+    val context: Context,
+    val intent: Intent
     ) : RecyclerView.Adapter<MascotaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MascotaViewHolder {
@@ -30,14 +32,15 @@ class MascotaAdapter
         val mascota = data[position]
 
         val key_drawable = mascota.keyDrawableFotoPerfil
-        val imageResource: Int = contex.getResources().getIdentifier(key_drawable, "drawable", contex.packageName)
-        val dra: Drawable? = contex.getDrawable(imageResource)
+        val imageResource: Int = context.getResources().getIdentifier(key_drawable, "drawable", context.packageName)
+        val dra: Drawable? = context.getDrawable(imageResource)
         holder.imgMascota.setImageDrawable(dra)
 
         holder.lblNombre.text = mascota.nombre
         holder.lblEdad.text = mascota.edad
         holder.btnMeGusta.setOnClickListener{(listener.onMeGustaClick(mascota))}
         holder.btnNoMeGusta.setOnClickListener{(listener.onNoMeGustaClick(mascota))}
+        listener.scroll(mascota, intent)
 
     }
 
@@ -85,4 +88,5 @@ class MascotaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 interface MascotaListEventListener {
     fun onMeGustaClick(mascota: Mascota)
     fun onNoMeGustaClick(mascota: Mascota)
+    fun scroll(mascota: Mascota, intent: Intent)
 }
