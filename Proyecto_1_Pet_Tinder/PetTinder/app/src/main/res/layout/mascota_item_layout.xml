@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="352dp"
-        android:layout_height="377dp"
+        android:id="@+id/imgMascota"
+        android:layout_width="369dp"
+        android:layout_height="398dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
@@ -20,26 +20,52 @@
 
     <TextView
         android:id="@+id/lblNombre"
-        android:layout_width="79dp"
-        android:layout_height="32dp"
+        android:layout_width="152dp"
+        android:layout_height="54dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="12dp"
         android:text="@string/textview"
-        android:textSize="24sp"
+        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imgMascota"
         tools:text="Siberiano" />
 
     <TextView
         android:id="@+id/lblEdad"
-        android:layout_width="94dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="236dp"
+        android:layout_width="138dp"
+        android:layout_height="52dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/textview"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMascota"
         tools:text="1 Año" />
+
+    <Button
+        android:id="@+id/btnMeGusta"
+        android:layout_width="166dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#4CAF50"
+        android:text="@string/me_gusta"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMascota"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btnNoMeGusta"
+        android:layout_width="166dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="220dp"
+        android:backgroundTint="#FF0000"
+        android:text="@string/no_me_gusta"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMascota"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

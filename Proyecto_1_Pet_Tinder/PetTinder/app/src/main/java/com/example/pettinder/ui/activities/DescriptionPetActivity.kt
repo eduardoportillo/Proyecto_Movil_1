@@ -1,4 +1,4 @@
-package com.example.pettinder.activities
+package com.example.pettinder.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -22,13 +22,12 @@ class DescriptionPetActivity : AppCompatActivity() {
 
     private fun setupEventListener() {
         btnVolverMain.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-
+            finish()
+            //val intent = Intent(this, MainActivity::class.java)
             //para recibir datos de Activity 1 al 2
             //val nombre = intent.getStringExtra("varNombre")
             //lblBienvenido.text = "Bienvenido" + nombre
-
-            startActivity(intent)
+            //startActivity(intent)
         }
     }
 }

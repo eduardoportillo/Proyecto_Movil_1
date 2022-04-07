@@ -1,12 +1,13 @@
 package com.example.pettinder.models
 
-class Mascota(
+import java.io.Serializable
+
+data class Mascota(
     var id: Int,
     var nombre: String,
     var edad: String,
-    val url_photo: String
-){
-    override fun toString(): String {
-        return  "$id $nombre $edad $url_photo"
-    }
-}
+    var descripcion: String,
+    var telefono: Int,
+    var url_photo: String
+
+): Serializable
