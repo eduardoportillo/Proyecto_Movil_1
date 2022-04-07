@@ -5,4 +5,7 @@
     <string name="no_me_gusta">no me gusta</string>
     <string name="me_gusta_1">Me Gusta</string>
     <string name="volver">volver</string>
+    <string name="textview">TextView</string>
+    <string name="telefono">Telefono:</string>
+    <string name="todo">TODO</string>
 </resources>

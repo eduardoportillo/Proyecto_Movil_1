@@ -1,33 +1,35 @@
 package com.example.pettinder.ui.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.example.pettinder.R
+import com.example.pettinder.databinding.ActivityDescriptionPetBinding
+import com.example.pettinder.models.Mascota
 
 class DescriptionPetActivity : AppCompatActivity() {
 
-    lateinit var btnVolverMain: Button
+    lateinit var mascota: Mascota
+    private lateinit var binding: ActivityDescriptionPetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_description_pet)
+        binding = ActivityDescriptionPetBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        btnVolverMain = findViewById(R.id.btnVolverMain)
+        mascota = intent.getSerializableExtra("varMascota") as Mascota
 
+        setData()
         setupEventListener()
+    }
+
+    private fun setData() {
+        binding.lblNombreD.text = mascota.nombre
+        binding.lblDescripcion.text = mascota.descripcion
+        binding.lblTelefono.text = mascota.telefono.toString()
 
     }
 
     private fun setupEventListener() {
-        btnVolverMain.setOnClickListener{
-            finish()
-            //val intent = Intent(this, MainActivity::class.java)
-            //para recibir datos de Activity 1 al 2
-            //val nombre = intent.getStringExtra("varNombre")
-            //lblBienvenido.text = "Bienvenido" + nombre
-            //startActivity(intent)
-        }
+        binding.btnVolverMain.setOnClickListener { finish() }
     }
 }

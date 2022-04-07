@@ -29,7 +29,7 @@ class MascotaAdapter
     override fun onBindViewHolder(holder: MascotaViewHolder, position: Int) {
         val mascota = data[position]
 
-        val key_drawable = mascota.key_drawable
+        val key_drawable = mascota.keyDrawableFotoPerfil
         val imageResource: Int = contex.getResources().getIdentifier(key_drawable, "drawable", contex.packageName)
         val dra: Drawable? = contex.getDrawable(imageResource)
         holder.imgMascota.setImageDrawable(dra)

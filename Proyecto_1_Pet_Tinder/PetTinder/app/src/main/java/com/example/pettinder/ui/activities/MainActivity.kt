@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity(), MascotaListEventListener {
 
     private fun setupRecyclerView(){
         val itemsMascotas = arrayListOf(
-            Mascota(1,"Jake", "1 Año", "Un Perrito muy hermoso", 70207967,"dachund"),
-            Mascota(2,"Garfield", "4 Meses", "Un Gatito muy hermoso",70207967, "garfield"),
-            Mascota(2,"Siberiano", "2 Años", "Un Perro Criado en Siberia",70207967,"husky")
+            Mascota(1,"Jake", "1 Año", "Un Perrito muy hermoso", 70207967,"dachund", "dachshundgaleria1", "dachshundgaleria2", "dachshundgaleria3"),
+            Mascota(2,"Garfield", "4 Meses", "Un Gatito muy hermoso",70207967, "garfield", "garfieldgaleria1", "garfieldgaleria2", "garfieldgaleria3"),
+            Mascota(2,"Siberiano", "2 Años", "Un Perro Criado en Siberia",70207967,"husky", "huskygaleria1", "huskygaleria2","huskygaleria3")
         )
         val layoutManager = LinearLayoutManager(
             this,
