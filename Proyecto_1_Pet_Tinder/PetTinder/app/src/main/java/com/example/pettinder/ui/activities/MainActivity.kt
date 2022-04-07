@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), MascotaListEventListener {
                 "garfieldgaleria3"
             ),
             Mascota(
-                2,
+                3,
                 "Siberiano",
                 "2 Años",
                 "Un Perro Criado en Siberia",
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity(), MascotaListEventListener {
     }
 
     override fun onNoMeGustaClick(mascota: Mascota) {
-        adapter.deletePersona(mascota)
+        adapter.deleteMascota(mascota)
     }
 
     override fun scroll(mascota: Mascota, intent: Intent) {
@@ -87,10 +87,8 @@ class MainActivity : AppCompatActivity(), MascotaListEventListener {
                     intent.putExtra("varMascota", mascota)
                     startActivityForResult(intent, 1)
                 }
-
-
                 else if (dx < 0) {
-                    adapter.deletePersona(mascota)
+                    adapter.deleteMascota(mascota)
                 }
             }
         })

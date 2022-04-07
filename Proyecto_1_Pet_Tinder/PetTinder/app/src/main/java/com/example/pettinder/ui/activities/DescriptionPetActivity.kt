@@ -49,7 +49,12 @@ class DescriptionPetActivity : AppCompatActivity() {
     }
 
     private fun setupEventListener() {
-        binding.btnVolverMain.setOnClickListener { finish() }
+        binding.btnVolverMain.setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+//            finish()
+        }
 
 
         binding.btnGaleriaImg1.setOnClickListener{

@@ -59,7 +59,7 @@ class MascotaAdapter
         return -1
     }
 
-    fun deletePersona(mascota: Mascota) {
+    fun deleteMascota(mascota: Mascota) {
         val position = searchMascota(mascota)
         data.removeAt(position)
         notifyItemRemoved(position)
