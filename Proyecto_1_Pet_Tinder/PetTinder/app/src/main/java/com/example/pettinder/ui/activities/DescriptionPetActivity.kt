@@ -1,5 +1,6 @@
 package com.example.pettinder.ui.activities
 
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pettinder.databinding.ActivityDescriptionPetBinding
@@ -27,9 +28,27 @@ class DescriptionPetActivity : AppCompatActivity() {
         binding.lblDescripcion.text = mascota.descripcion
         binding.lblTelefono.text = mascota.telefono.toString()
 
+        var key_drawable_temp = mascota.keyDrawableGaleria1
+        val imageResource1: Int = getResources().getIdentifier(key_drawable_temp, "drawable", packageName)
+        var dra1: Drawable? = getDrawable(imageResource1)
+        binding.btnGaleriaImg1.setImageDrawable(dra1)
+
+        key_drawable_temp = mascota.keyDrawableGaleria2
+        val imageResource2: Int = getResources().getIdentifier(key_drawable_temp, "drawable", packageName)
+        val dra2: Drawable? = getDrawable(imageResource2)
+        binding.btnGaleriaImg2.setImageDrawable(dra2)
+
+        key_drawable_temp = mascota.keyDrawableGaleria3
+        val imageResource3: Int = getResources().getIdentifier(key_drawable_temp, "drawable", packageName)
+        val dra3: Drawable? = getDrawable(imageResource3)
+        binding.btnGaleriaImg3.setImageDrawable(dra3)
+
+
+
     }
 
     private fun setupEventListener() {
         binding.btnVolverMain.setOnClickListener { finish() }
+
     }
 }

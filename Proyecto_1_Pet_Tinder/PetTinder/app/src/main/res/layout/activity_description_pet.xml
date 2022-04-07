@@ -88,6 +88,8 @@
             android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:contentDescription="@string/todo"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/btn_star_big_on"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
 
@@ -99,6 +101,8 @@
             android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:contentDescription="@string/todo"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/btn_star_big_on"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
@@ -110,6 +114,8 @@
             android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:contentDescription="@string/todo"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/btn_star_big_on"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
