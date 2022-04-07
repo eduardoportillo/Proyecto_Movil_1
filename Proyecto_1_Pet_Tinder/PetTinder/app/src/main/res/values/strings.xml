@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">PetTinder</string>
-    <string name="me_gusta">Me Gusta</string>
-    <string name="jake">Jake</string>
-    <string name="simbolReturn"><![CDATA[<]]></string>
+    <string name="mascota_imagen">mascota_imagen</string>
+    <string name="me_gusta">me_gusta</string>
+    <string name="no_me_gusta">no me gusta</string>
+    <string name="me_gusta_1">Me Gusta</string>
     <string name="volver">volver</string>
-    <string name="mascota_imagen">mascota imagen</string>
-    <string name="textview">TextView</string>
-    <string name="no_me_gusta">No Me Gusta</string>
 </resources>

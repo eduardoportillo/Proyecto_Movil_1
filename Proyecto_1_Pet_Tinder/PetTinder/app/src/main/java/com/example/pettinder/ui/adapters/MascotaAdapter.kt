@@ -1,5 +1,7 @@
 package com.example.pettinder.ui.adapters
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pettinder.R
 import com.example.pettinder.models.Mascota
 
+
 class MascotaAdapter
     (
     val data: ArrayList<Mascota>,
-    val listener: MascotaListEventListener
+    val listener: MascotaListEventListener,
+    val contex: Context
     ) : RecyclerView.Adapter<MascotaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MascotaViewHolder {
@@ -25,7 +29,10 @@ class MascotaAdapter
     override fun onBindViewHolder(holder: MascotaViewHolder, position: Int) {
         val mascota = data[position]
 
-        //TODO poner la imagen de la mascota en ImageView
+        val key_drawable = mascota.key_drawable
+        val imageResource: Int = contex.getResources().getIdentifier(key_drawable, "drawable", contex.packageName)
+        val dra: Drawable? = contex.getDrawable(imageResource)
+        holder.imgMascota.setImageDrawable(dra)
 
         holder.lblNombre.text = mascota.nombre
         holder.lblEdad.text = mascota.edad

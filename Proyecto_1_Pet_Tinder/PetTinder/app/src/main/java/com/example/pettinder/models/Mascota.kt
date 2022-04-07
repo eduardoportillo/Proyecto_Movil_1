@@ -8,6 +8,6 @@ data class Mascota(
     var edad: String,
     var descripcion: String,
     var telefono: Int,
-    var url_photo: String
+    var key_drawable: String
 
 ): Serializable
