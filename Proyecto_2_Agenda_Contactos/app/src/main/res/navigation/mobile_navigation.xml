@@ -9,14 +9,26 @@
         android:id="@+id/contactoFragment"
         android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.contactoFragment"
         android:label="fragment_contactos"
-        tools:layout="@layout/fragment_contactos" />
+        tools:layout="@layout/fragment_contactos" >
+        <action
+            android:id="@+id/action_contactoFragment_to_infoContactoFragment"
+            app:destination="@id/infoContactoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/formContactFragment"
         android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.FormContactFragment"
         android:label="fragment_form_contact"
-        tools:layout="@layout/fragment_form_contact" >
+        tools:layout="@layout/fragment_form_contact" />
+    <fragment
+        android:id="@+id/infoContactoFragment"
+        android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.InfoContactoFragment"
+        android:label="fragment_info_contacto"
+        tools:layout="@layout/fragment_info_contacto" >
+        <argument
+            android:name="contactoEnviado"
+            app:argType="com.example.proyecto_2_agenda_contactos.models.Contacto" />
         <action
-            android:id="@+id/action_formContactFragment_to_contactoFragment"
-            app:destination="@id/contactoFragment" />
+            android:id="@+id/action_infoContactoFragment_to_formContactFragment"
+            app:destination="@id/formContactFragment" />
     </fragment>
 </navigation>

@@ -25,4 +25,11 @@
     <string name="telefono">Telefono</string>
     <string name="edad">Edad</string>
     <string name="guardar">Guardar</string>
+    <string name="imagen_contacto_info">imagen contacto Info</string>
+    <string name="nombreinfo">Nombre:</string>
+    <string name="textview">TextView</string>
+    <string name="ciudadinfo">Ciudad:</string>
+    <string name="edadinfo">Edad:</string>
+    <string name="direcci_n">Dirección:</string>
+    <string name="emailinfo">Email:</string>
 </resources>

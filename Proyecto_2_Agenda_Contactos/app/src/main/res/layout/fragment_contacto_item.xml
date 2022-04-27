@@ -31,7 +31,7 @@
                 android:id="@+id/nombreContacto"
                 android:layout_width="82dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0"
                 android:textAppearance="?attr/textAppearanceListItem"
@@ -53,7 +53,7 @@
             android:id="@+id/numeroContacto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textSize="20sp"
             tools:text="70207967" />
