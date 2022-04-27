@@ -14,5 +14,9 @@
         android:id="@+id/formContactFragment"
         android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.FormContactFragment"
         android:label="fragment_form_contact"
-        tools:layout="@layout/fragment_form_contact" />
+        tools:layout="@layout/fragment_form_contact" >
+        <action
+            android:id="@+id/action_formContactFragment_to_contactoFragment"
+            app:destination="@id/contactoFragment" />
+    </fragment>
 </navigation>

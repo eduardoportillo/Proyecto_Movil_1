@@ -10,7 +10,6 @@ import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.example.proyecto_2_agenda_contactos.R
 import com.example.proyecto_2_agenda_contactos.datasingleton.ContactoItem
-import com.example.proyecto_2_agenda_contactos.models.Contacto
 
 class FormContactFragment : Fragment() {
     lateinit var inputName: EditText
@@ -24,7 +23,9 @@ class FormContactFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
 
+        }
     }
 
     override fun onCreateView(
@@ -52,7 +53,7 @@ class FormContactFragment : Fragment() {
                 inputDireccion.text.toString(),
                 inputTelefono.text.toString().toInt()
             ) //TODO canviar url
-            
+            findNavController().navigate(R.id.contactoFragment)
         }
 
         return view
