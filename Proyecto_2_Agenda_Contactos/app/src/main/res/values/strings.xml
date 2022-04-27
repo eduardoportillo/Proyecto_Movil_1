@@ -16,4 +16,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="crear_contacto">Crear Contacto</string>
+    <string name="img">img</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="email">Email</string>
+    <string name="direccion">direccion</string>
+    <string name="telefono">Telefono</string>
+    <string name="edad">Edad</string>
+    <string name="guardar">Guardar</string>
 </resources>
