@@ -18,7 +18,11 @@
         android:id="@+id/formContactFragment"
         android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.FormContactFragment"
         android:label="fragment_form_contact"
-        tools:layout="@layout/fragment_form_contact" />
+        tools:layout="@layout/fragment_form_contact" >
+        <argument
+            android:name="contactoEnviado"
+            app:argType="com.example.proyecto_2_agenda_contactos.models.Contacto" />
+    </fragment>
     <fragment
         android:id="@+id/infoContactoFragment"
         android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.InfoContactoFragment"
@@ -28,7 +32,27 @@
             android:name="contactoEnviado"
             app:argType="com.example.proyecto_2_agenda_contactos.models.Contacto" />
         <action
-            android:id="@+id/action_infoContactoFragment_to_formContactFragment"
-            app:destination="@id/formContactFragment" />
+            android:id="@+id/action_infoContactoFragment_to_editFormContactoFragment"
+            app:destination="@id/editFormContactoFragment" />
+        <action
+            android:id="@+id/action_infoContactoFragment_to_telefonoFragment"
+            app:destination="@id/telefonoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFormContactoFragment"
+        android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.contacto.EditFormContactoFragment"
+        android:label="EditFormContactoFragment" >
+        <argument
+            android:name="contactoEnviado"
+            app:argType="com.example.proyecto_2_agenda_contactos.models.Contacto" />
+    </fragment>
+    <fragment
+        android:id="@+id/telefonoFragment"
+        android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.telefono.TelefonoFragment"
+        android:label="fragment_telefono_list"
+        tools:layout="@layout/fragment_telefono_list" >
+        <argument
+            android:name="telefonosDelContacto"
+            app:argType="com.example.proyecto_2_agenda_contactos.models.Telefono" />
     </fragment>
 </navigation>

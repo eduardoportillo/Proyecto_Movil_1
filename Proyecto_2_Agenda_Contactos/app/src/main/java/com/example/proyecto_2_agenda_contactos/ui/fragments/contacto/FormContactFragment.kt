@@ -12,6 +12,7 @@ import com.example.proyecto_2_agenda_contactos.R
 import com.example.proyecto_2_agenda_contactos.datasingleton.ContactoItem
 
 class FormContactFragment : Fragment() {
+
     lateinit var inputName: EditText
     lateinit var inputApellido: EditText
     lateinit var inputCiudad: EditText
@@ -40,19 +41,20 @@ class FormContactFragment : Fragment() {
         inputEmail = view.findViewById(R.id.inputEmail)
         inputDireccion = view.findViewById(R.id.inputDireccion)
         inputTelefono = view.findViewById(R.id.inputTelefono)
+
         btnGuardar = view.findViewById(R.id.btnGuardar)
 
         btnGuardar.setOnClickListener {
-            ContactoItem.createContact(
-                inputName.text.toString(),
-                inputApellido.text.toString(),
-                "\\",
-                inputCiudad.text.toString(),
-                inputEdad.text.toString().toInt(),
-                inputEmail.text.toString(),
-                inputDireccion.text.toString(),
-                inputTelefono.text.toString().toInt()
-            ) //TODO canviar url
+                ContactoItem.createContact(
+                    inputName.text.toString(),
+                    inputApellido.text.toString(),
+                    "\\",
+                    inputCiudad.text.toString(),
+                    inputEdad.text.toString().toInt(),
+                    inputEmail.text.toString(),
+                    inputDireccion.text.toString(),
+                    inputTelefono.text.toString().toInt()
+                ) //TODO canviar url
             findNavController().navigate(R.id.contactoFragment)
         }
 

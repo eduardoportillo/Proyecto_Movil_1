@@ -32,4 +32,7 @@
     <string name="edadinfo">Edad:</string>
     <string name="direcci_n">Dirección:</string>
     <string name="emailinfo">Email:</string>
+    <string name="telefonos">Telefonos:</string>
+    <string name="todo">TODO</string>
+    <string name="deletebtn">deleteBtn</string>
 </resources>
