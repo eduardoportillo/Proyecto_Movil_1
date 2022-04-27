@@ -22,6 +22,9 @@
         <argument
             android:name="contactoEnviado"
             app:argType="com.example.proyecto_2_agenda_contactos.models.Contacto" />
+        <action
+            android:id="@+id/action_formContactFragment_to_contactoFragment"
+            app:destination="@id/contactoFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoContactoFragment"
@@ -35,8 +38,8 @@
             android:id="@+id/action_infoContactoFragment_to_editFormContactoFragment"
             app:destination="@id/editFormContactoFragment" />
         <action
-            android:id="@+id/action_infoContactoFragment_to_telefonoFragment"
-            app:destination="@id/telefonoFragment" />
+            android:id="@+id/action_infoContactoFragment_to_formTelefonoFragment"
+            app:destination="@id/formTelefonoFragment" />
     </fragment>
     <fragment
         android:id="@+id/editFormContactoFragment"
@@ -50,9 +53,14 @@
         android:id="@+id/telefonoFragment"
         android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.telefono.TelefonoFragment"
         android:label="fragment_telefono_list"
-        tools:layout="@layout/fragment_telefono_list" >
+        tools:layout="@layout/fragment_telefono_list" />
+    <fragment
+        android:id="@+id/formTelefonoFragment"
+        android:name="com.example.proyecto_2_agenda_contactos.ui.fragments.telefono.FormTelefonoFragment"
+        android:label="fragment_form_telefono"
+        tools:layout="@layout/fragment_form_telefono" >
         <argument
-            android:name="telefonosDelContacto"
-            app:argType="com.example.proyecto_2_agenda_contactos.models.Telefono" />
+            android:name="idContacto"
+            app:argType="integer" />
     </fragment>
 </navigation>

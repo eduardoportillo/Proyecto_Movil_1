@@ -9,10 +9,6 @@ import com.example.proyecto_2_agenda_contactos.R
 import com.example.proyecto_2_agenda_contactos.databinding.FragmentTelefonoItemBinding
 import com.example.proyecto_2_agenda_contactos.ui.fragments.telefono.placeholder.PlaceholderContent.PlaceholderItem
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyTelefonoRecyclerViewAdapter(
     private val values: List<PlaceholderItem>
 ) : RecyclerView.Adapter<MyTelefonoRecyclerViewAdapter.ViewHolder>() {

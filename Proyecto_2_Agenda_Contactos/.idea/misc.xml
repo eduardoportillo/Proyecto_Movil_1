@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Portillo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.12409420289855072" />
         <entry key="..\:/Users/Portillo/Desktop/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/activity_main.xml" value="0.41875" />
         <entry key="..\:/Users/Portillo/Desktop/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/app_bar_main.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/Portillo/Desktop/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/contactos_item_layout.xml" value="0.16847826086956522" />
@@ -18,13 +19,15 @@
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/app_bar_main.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/content_main.xml" value="0.18" />
+        <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_blank.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_contacto_item.xml" value="0.33" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_contactos.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_edit_form_contacto.xml" value="0.41875" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_form_contact.xml" value="0.3175355450236967" />
+        <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_form_telefono.xml" value="0.33" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_gallery.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_home.xml" value="0.16847826086956522" />
-        <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_info_contacto.xml" value="0.33" />
+        <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_info_contacto.xml" value="0.5" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_item_list.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_slideshow.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/Portillo/Documents/GitHub/Proyecto_Movil_1/Proyecto_2_Agenda_Contactos/app/src/main/res/layout/fragment_telefono_item.xml" value="0.209375" />

@@ -27,7 +27,6 @@
     <string name="guardar">Guardar</string>
     <string name="imagen_contacto_info">imagen contacto Info</string>
     <string name="nombreinfo">Nombre:</string>
-    <string name="textview">TextView</string>
     <string name="ciudadinfo">Ciudad:</string>
     <string name="edadinfo">Edad:</string>
     <string name="direcci_n">Dirección:</string>
@@ -35,4 +34,9 @@
     <string name="telefonos">Telefonos:</string>
     <string name="todo">TODO</string>
     <string name="deletebtn">deleteBtn</string>
+    <string name="imgtelefono">imgTelefono</string>
+    <string name="telefononnn">Telefono:</string>
+    <string name="textview">TextView</string>
+    <string name="tipo_tel_fono">Tipo Teléfono</string>
+    <string name="a_adir_telefono">Añadir Telefono:</string>
 </resources>

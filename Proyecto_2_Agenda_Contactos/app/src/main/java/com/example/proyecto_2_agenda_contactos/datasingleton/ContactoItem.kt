@@ -5,7 +5,7 @@ import com.example.proyecto_2_agenda_contactos.models.Telefono
 
 object ContactoItem {
     var listContacto = arrayListOf<Contacto>()
-    var tipoTelefono = arrayListOf<String>("oficina", "casa", "celular", "trabajo")
+    var tipoTelefono = arrayListOf("oficina", "casa", "celular", "trabajo")
 
     private var idContacto = 0
     private var idTelefono = 0

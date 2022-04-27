@@ -8,19 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.key
+import androidx.fragment.app.FragmentResultListener
+import androidx.fragment.app.setFragmentResultListener
 import com.example.proyecto_2_agenda_contactos.R
+import com.example.proyecto_2_agenda_contactos.models.Contacto
 import com.example.proyecto_2_agenda_contactos.ui.fragments.telefono.placeholder.PlaceholderContent
 
 class TelefonoFragment : Fragment() {
 
     private var columnCount = 1
+//    lateinit var contacto: Contacto
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setFragmentResultListener("dataInfoContactoFragment"){key, bundle-> val contacto =
+            bundle.getSerializable("contactoEnviado") as Contacto
+        } // TODO intentando recibir dato de otro fragment
 
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+
+
     }
 
     override fun onCreateView(
@@ -55,5 +62,8 @@ class TelefonoFragment : Fragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
+    }
+    interface ContactoSendEventListener{
+        fun contactoSend(contacto: Contacto)
     }
 }

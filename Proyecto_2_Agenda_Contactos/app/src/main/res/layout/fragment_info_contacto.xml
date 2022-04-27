@@ -184,10 +184,23 @@
         tools:layout="@layout/fragment_telefono_list" />
 
     <ImageButton
+        android:id="@+id/btnEditContacto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/todo"
+        android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteContacto"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentTelefonoList"
+        tools:ignore="ImageContrastCheck,DuplicateSpeakableTextCheck" />
+
+    <ImageButton
         android:id="@+id/btnDeleteContacto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="72dp"
         android:contentDescription="@string/deletebtn"
         android:src="@android:drawable/ic_menu_delete"
         app:layout_constraintEnd_toEndOf="parent"
@@ -197,16 +210,32 @@
         tools:ignore="ImageContrastCheck" />
 
     <ImageButton
-        android:id="@+id/btnEditContacto"
+        android:id="@+id/btnAddTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/todo"
-        android:src="@android:drawable/ic_menu_edit"
+        android:layout_marginStart="12dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@android:drawable/stat_sys_vp_phone_call"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditContacto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.382"
-        app:layout_constraintStart_toEndOf="@+id/btnDeleteContacto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/labelAddTelefono"
         app:layout_constraintTop_toBottomOf="@+id/fragmentTelefonoList"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintVertical_bias="0.296"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/labelAddTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/a_adir_telefono"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteContacto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentTelefonoList"
+        app:layout_constraintVertical_bias="0.339" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
