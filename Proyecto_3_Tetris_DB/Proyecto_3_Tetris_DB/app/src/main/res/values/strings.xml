@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Proyecto_3_Tetris_DB</string>
+
+    <string name="title_activity_home">Tetris</string>
+    <string name="dummy_content">TETRIS</string>
+    <string name="points_label">Puntos:</string>
+    <string name="part_label">Proximo</string>
+    <string name="new_game_label">Nuevo Juego</string>
+    <string name="resume_label">Continuar</string>
+    <string name="config_label">Configurar</string>
+    <string name="game_name">Tetris</string>
+    <string name="settings_title">Configuración</string>
+    <string name="game_mode">Dificultad</string>
+    <string name="part_number_label">Numero de piesas</string>
+    <string name="game_over" translatable="false">Game Over!</string>
+    <string name="record_label" translatable="false">Record:</string>
+    <string name="new_record">Nuevo Record:</string>
+    <string name="points_text">Puntuación:</string>
+    <string name="exit_label">Salir</string>
+</resources>
