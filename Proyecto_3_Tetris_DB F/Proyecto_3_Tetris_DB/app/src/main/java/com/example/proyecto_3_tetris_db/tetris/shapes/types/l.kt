@@ -4,7 +4,7 @@ import com.example.proyecto_3_tetris_db.R
 import com.example.proyecto_3_tetris_db.tetris.TBoard
 import com.example.proyecto_3_tetris_db.tetris.shapes.Shape
 
-class l(tBoard: TBoard):Shape("default", tBoard, R.drawable.p3) {
+class l(tBoard: TBoard):Shape("l", tBoard, R.drawable.p3) {
 
     init {
         spaces[0][1]=1

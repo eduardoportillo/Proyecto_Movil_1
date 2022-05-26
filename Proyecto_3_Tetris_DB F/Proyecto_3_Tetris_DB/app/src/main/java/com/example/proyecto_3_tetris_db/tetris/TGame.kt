@@ -31,7 +31,6 @@ class TGame(
 
         var shape = ShapeFactory.createFromDB(parentActivity,tBoard)
         if(shape == null){
-            //Inicia nueva partida
             createRadomShape()
         }else{
             currentShape = shape
@@ -88,7 +87,6 @@ class TGame(
         AppDatabase.getInstance(parentActivity).shapeDao().delete(AppDatabase.getInstance(parentActivity).shapeDao().selectById("current"))
         AppDatabase.getInstance(parentActivity).pointDao().deleteAll()
         parentActivity.finish()
-
     }
 
     fun showGameOver() {
