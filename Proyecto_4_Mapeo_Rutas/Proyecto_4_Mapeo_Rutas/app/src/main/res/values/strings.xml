@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Proyecto_4_Mapeo_Rutas</string>
+    <string name="todo">TODO</string>
+    <string name="nombres">Nombres</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="guardar">Guardar</string>
+</resources>
