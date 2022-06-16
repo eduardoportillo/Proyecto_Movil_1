@@ -29,10 +29,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        puntos = intent.getParcelableArrayListExtra("VarPuntos")!!
         intent.getCharSequenceArrayListExtra("VarPuntos") ?.let { puntos = it as ArrayList<Punto> }
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -49,10 +47,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+//        val sydney = LatLng(-34.0, 151.0)
+//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+        if (puntos != null) {
+            for (punto in puntos) {
+                var latitudDouble = punto.latitud?.toDouble()
+                var longitudDouble = punto.longitud?.toDouble()
+                val latLng = LatLng(latitudDouble!! , longitudDouble!!)
+                mMap.addMarker(MarkerOptions().position(latLng))
+            }
+        }
+
     }
 }
