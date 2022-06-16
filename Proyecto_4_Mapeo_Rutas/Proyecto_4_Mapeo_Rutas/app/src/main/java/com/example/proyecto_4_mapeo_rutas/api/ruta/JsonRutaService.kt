@@ -1,5 +1,6 @@
 package com.example.proyecto_4_mapeo_rutas.api.ruta
 
+import com.example.proyecto_4_mapeo_rutas.models.Response
 import com.example.proyecto_4_mapeo_rutas.models.Ruta
 import retrofit2.Call
 import retrofit2.http.*
@@ -11,9 +12,9 @@ interface JsonRutaService {
     @POST("/api/rutas")
     fun createRuta(@Body ruta: Ruta): Call<Ruta>
 
-    @PATCH("/api/rutas") // sintaxis de ruta /api/rutas/id_ruta
-    fun uptdateRuta(@Body ruta: Ruta): Call<Ruta>
+    @PATCH("/api/rutas/{id}") // sintaxis de ruta /api/rutas/id_ruta
+    fun updateRuta(@Body ruta: Ruta, @Path("id") id: Long): Call<Ruta>
 
-    @DELETE("/api/rutas/5/")
-    fun deleteRuta(@Body ruta: Ruta): Call<Ruta>
+    @DELETE("/api/rutas/{id}")
+    fun deleteRuta(@Path("id") id: Long): Call<Response>
 }

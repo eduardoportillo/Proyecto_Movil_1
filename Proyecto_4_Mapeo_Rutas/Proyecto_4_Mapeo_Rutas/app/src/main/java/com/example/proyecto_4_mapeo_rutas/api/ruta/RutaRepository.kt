@@ -1,6 +1,8 @@
 package com.example.proyecto_4_mapeo_rutas.api.ruta
 
+import com.example.proyecto_4_mapeo_rutas.models.Response
 import com.example.proyecto_4_mapeo_rutas.models.Ruta
+import com.example.proyecto_4_mapeo_rutas.ui.activities.FormActivity
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -19,7 +21,7 @@ class RutaRepository {
     fun getRutasbyUser(listener: RutaListener) {
         retrofitService.getRutasbyUser().enqueue(object : retrofit2.Callback<ArrayList<Ruta>> {
             override fun onFailure(call: retrofit2.Call<ArrayList<Ruta>>, t: Throwable) {
-                listener.onError(t)
+                listener.onRutaListError(t)
             }
             override fun onResponse(
                 call: retrofit2.Call<ArrayList<Ruta>>,
@@ -33,7 +35,7 @@ class RutaRepository {
     fun createRuta(ruta: Ruta, listener: CreateRutaListener) {
         retrofitService.createRuta(ruta).enqueue(object : retrofit2.Callback<Ruta> {
             override fun onFailure(call: retrofit2.Call<Ruta>, t: Throwable) {
-                listener.onError(t)
+                listener.onRutaCreateError(t)
             }
             override fun onResponse(
                 call: retrofit2.Call<Ruta>,
@@ -44,26 +46,52 @@ class RutaRepository {
         })
     }
 
+    fun updateRuta(id:Long, ruta: Ruta, listener: UpdateRutaListener) {
+        retrofitService.updateRuta(ruta, id).enqueue(object : retrofit2.Callback<Ruta> {
+            override fun onFailure(call: retrofit2.Call<Ruta>, t: Throwable) {
+                listener.onRutaUpdateError(t)
+            }
+            override fun onResponse(
+                call: retrofit2.Call<Ruta>,
+                response: retrofit2.Response<Ruta>
+            ) {
+                listener.UpdateRutaReady(response.body()!!)
+            }
+        })
+    }
 
+    fun deleteRuta(id:Long, listener: DeleteRutaListener) {
+        retrofitService.deleteRuta(id).enqueue(object : retrofit2.Callback<Response> {
+            override fun onFailure(call: retrofit2.Call<Response>, t: Throwable) {
+                listener.onRutaDeleteError(t)
+            }
+            override fun onResponse(
+                call: retrofit2.Call<Response>,
+                response: retrofit2.Response<Response>
+            ) {
+                listener.deleteRutaReady(response.body()!!)
+            }
+        })
+    }
 
     interface RutaListener {
         fun getListaRutaReady(ruta: ArrayList<Ruta>)
-        fun onError(t: Throwable)
+        fun onRutaListError(t: Throwable)
     }
 
     interface CreateRutaListener {
         fun createRutaReady(ruta: Ruta)
-        fun onError(t: Throwable)
+        fun onRutaCreateError(t: Throwable)
     }
 
     interface UpdateRutaListener {
         fun  UpdateRutaReady(ruta: Ruta)
-        fun onError(t: Throwable)
+        fun onRutaUpdateError(t: Throwable)
     }
 
     interface DeleteRutaListener {
-        fun deleteRutaReady(ruta: Ruta)
-        fun onError(t: Throwable)
+        fun deleteRutaReady(res: Response)
+        fun onRutaDeleteError(t: Throwable)
     }
 
 }

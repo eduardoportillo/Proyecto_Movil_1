@@ -7,9 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_4_mapeo_rutas.R
+import com.example.proyecto_4_mapeo_rutas.api.ruta.RutaRepository
 import com.example.proyecto_4_mapeo_rutas.models.Ruta
 
-class RutaAdapter(val data: ArrayList<Ruta>) : RecyclerView.Adapter<RutaAdapter.RutaViewHolder>() {
+class RutaAdapter(val data: ArrayList<Ruta>, val listener: RutaListEventListener) : RecyclerView.Adapter<RutaAdapter.RutaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RutaViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -21,11 +22,9 @@ class RutaAdapter(val data: ArrayList<Ruta>) : RecyclerView.Adapter<RutaAdapter.
         val ruta = data[position]
         holder.lblTitle.text = "id: "+ruta.id + " Name: " + ruta.nombre + " User: " + ruta.user_id
 
-        holder.btnDelete.setOnClickListener {
-            data.removeAt(position)
-            notifyItemRemoved(position)
-        }
-        holder.btnEdit.setOnClickListener {}
+        holder.btnDelete.setOnClickListener {listener.onDeleteClick(ruta)}
+
+        holder.btnEdit.setOnClickListener {listener.onEditClick(ruta)}
     }
 
     override fun getItemCount(): Int {
@@ -36,5 +35,10 @@ class RutaAdapter(val data: ArrayList<Ruta>) : RecyclerView.Adapter<RutaAdapter.
         val lblTitle: TextView = view.findViewById(R.id.lblName)
         var btnEdit: Button = itemView.findViewById(R.id.btnEdit)
         var btnDelete: Button = itemView.findViewById(R.id.btnDelete)
+    }
+
+    interface RutaListEventListener {
+        fun onEditClick(ruta: Ruta)
+        fun onDeleteClick(ruta: Ruta)
     }
 }
