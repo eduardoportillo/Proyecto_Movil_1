@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.proyecto_4_mapeo_rutas.R
 import com.example.proyecto_4_mapeo_rutas.databinding.ActivityMapsBinding
+import com.example.proyecto_4_mapeo_rutas.models.Punto
+import com.example.proyecto_4_mapeo_rutas.models.Ruta
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -19,11 +21,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
+    lateinit var puntos: ArrayList<Punto>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        puntos = intent.getParcelableArrayListExtra("VarPuntos")!!
+        intent.getCharSequenceArrayListExtra("VarPuntos") ?.let { puntos = it as ArrayList<Punto> }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager

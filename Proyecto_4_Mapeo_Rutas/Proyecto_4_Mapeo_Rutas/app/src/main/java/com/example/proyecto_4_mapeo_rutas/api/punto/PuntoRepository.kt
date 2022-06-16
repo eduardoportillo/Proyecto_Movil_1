@@ -33,7 +33,7 @@ class PuntoRepository {
     }
 
     interface PuntoListener {
-        fun getListaPuntoReady(ruta: ArrayList<Punto>)
+        fun getListaPuntoReady(puntos: ArrayList<Punto>)
         fun onPuntoListError(t: Throwable)
     }
 }

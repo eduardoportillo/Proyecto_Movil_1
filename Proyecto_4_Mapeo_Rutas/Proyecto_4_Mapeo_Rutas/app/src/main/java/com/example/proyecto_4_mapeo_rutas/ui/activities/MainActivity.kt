@@ -7,15 +7,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyecto_4_mapeo_rutas.api.punto.PuntoRepository
 import com.example.proyecto_4_mapeo_rutas.databinding.ActivityMainBinding
 import com.example.proyecto_4_mapeo_rutas.ui.adapters.RutaAdapter
 import com.example.proyecto_4_mapeo_rutas.api.ruta.RutaRepository
+import com.example.proyecto_4_mapeo_rutas.models.Punto
 import com.example.proyecto_4_mapeo_rutas.models.Response
 import com.example.proyecto_4_mapeo_rutas.models.Ruta
 
 
 class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
-    RutaAdapter.RutaListEventListener, RutaRepository.DeleteRutaListener {
+    RutaAdapter.RutaListEventListener, RutaRepository.DeleteRutaListener,
+    PuntoRepository.PuntoListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -41,6 +44,10 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
 
     private fun fetchRutaList() {
         RutaRepository().getRutasbyUser(this)
+    }
+
+    private fun fetchPuntosList(idRuta: Long) {
+        PuntoRepository().getPuntosByRuta(idRuta, this)
     }
 
     override fun getListaRutaReady(data: ArrayList<Ruta>) {
@@ -79,9 +86,7 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
     }
 
     override fun onVerPuntosClick(idRuta: Long) {
-        val intent = Intent(this, MapsActivity::class.java)
-        intent.putExtra("VarIdRuta", idRuta)
-        startActivity(intent)
+        fetchPuntosList(idRuta)
     }
 
     override fun deleteRutaReady(res: Response) {
@@ -89,6 +94,30 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
     }
 
     override fun onRutaDeleteError(t: Throwable) {
+        AlertDialog.Builder(this)
+            .setTitle("Ops")
+            .setMessage("Ocurrio un error al crear la ruta")
+            .setPositiveButton(android.R.string.yes) { _, _ ->
+                Toast.makeText(
+                    applicationContext,
+                    android.R.string.yes, Toast.LENGTH_SHORT
+                ).show()
+            }
+            .setNegativeButton(android.R.string.no) { _, _ ->
+                Toast.makeText(
+                    applicationContext,
+                    android.R.string.no, Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
+    override fun getListaPuntoReady(puntos: ArrayList<Punto>) {
+        val intent = Intent(this, MapsActivity::class.java)
+        intent.putExtra("VarPuntos", puntos)
+        startActivity(intent)
+    }
+
+    override fun onPuntoListError(t: Throwable) {
         AlertDialog.Builder(this)
             .setTitle("Ops")
             .setMessage("Ocurrio un error al crear la ruta")
