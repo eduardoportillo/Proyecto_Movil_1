@@ -78,6 +78,12 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
         RutaRepository().deleteRuta(ruta.id!!, this)
     }
 
+    override fun onVerPuntosClick(idRuta: Long) {
+        val intent = Intent(this, MapsActivity::class.java)
+        intent.putExtra("VarIdRuta", idRuta)
+        startActivity(intent)
+    }
+
     override fun deleteRutaReady(res: Response) {
         fetchRutaList()
     }

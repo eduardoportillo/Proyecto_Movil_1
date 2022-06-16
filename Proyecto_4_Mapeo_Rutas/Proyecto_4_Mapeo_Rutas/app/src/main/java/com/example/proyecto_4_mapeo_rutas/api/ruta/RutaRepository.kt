@@ -2,7 +2,6 @@ package com.example.proyecto_4_mapeo_rutas.api.ruta
 
 import com.example.proyecto_4_mapeo_rutas.models.Response
 import com.example.proyecto_4_mapeo_rutas.models.Ruta
-import com.example.proyecto_4_mapeo_rutas.ui.activities.FormActivity
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

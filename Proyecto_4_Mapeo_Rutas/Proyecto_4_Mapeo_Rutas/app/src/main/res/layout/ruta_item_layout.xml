@@ -10,7 +10,7 @@
         android:id="@+id/lblName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,30 +18,32 @@
 
     <Button
         android:id="@+id/btnEdit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Editar"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        android:layout_width="107dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/editar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
     <Button
         android:id="@+id/btnDelete"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="112dp"
+        android:layout_height="54dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Eliminar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        android:layout_marginTop="20dp"
+        android:text="@string/eliminar"
+        app:layout_constraintStart_toEndOf="@+id/btnEdit"
         app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="206dp" />
+    <Button
+        android:id="@+id/btnVer"
+        android:layout_width="116dp"
+        android:layout_height="54dp"
+        android:text="@string/ver_puntos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toEndOf="@+id/btnDelete"
+        app:layout_constraintTop_toBottomOf="@+id/lblName"
+        app:layout_constraintVertical_bias="0.871" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,5 +4,9 @@
     <string name="nombres">Nombres</string>
     <string name="cancelar">Cancelar</string>
     <string name="guardar">Guardar</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="activity_maps">MapsActivity</string>
+    <string name="textview">TextView</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="ver_puntos">Ver Puntos</string>
 </resources>

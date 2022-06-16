@@ -2,17 +2,20 @@ package com.example.proyecto_4_mapeo_rutas.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.proyecto_4_mapeo_rutas.R
+import com.example.proyecto_4_mapeo_rutas.databinding.ActivityMapsBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.proyecto_4_mapeo_rutas.ui.activities.databinding.ActivityMapsBinding
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private var marker: Marker? = null
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
