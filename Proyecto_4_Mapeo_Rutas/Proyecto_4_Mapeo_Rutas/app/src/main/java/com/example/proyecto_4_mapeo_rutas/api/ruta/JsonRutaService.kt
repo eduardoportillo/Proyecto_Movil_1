@@ -17,4 +17,7 @@ interface JsonRutaService {
 
     @DELETE("/api/rutas/{id}")
     fun deleteRuta(@Path("id") id: Long): Call<Response>
+
+    @DELETE("/api/rutas/{id}/vaciar")
+    fun vaciarPuntos(@Path("id") id: Long): Call<Response>
 }

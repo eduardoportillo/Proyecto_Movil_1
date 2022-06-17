@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
     PuntoRepository.PuntoListener {
 
     private lateinit var binding: ActivityMainBinding
+    var idRuta: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
     }
 
     private fun fetchPuntosList(idRuta: Long) {
+        this.idRuta = idRuta
         PuntoRepository().getPuntosByRuta(idRuta, this)
     }
 
@@ -86,6 +88,7 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
     }
 
     override fun onVerPuntosClick(idRuta: Long) {
+
         fetchPuntosList(idRuta)
     }
 
@@ -113,6 +116,7 @@ class MainActivity : AppCompatActivity(), RutaRepository.RutaListener,
 
     override fun getListaPuntoReady(puntos: ArrayList<Punto>) {
         val intent = Intent(this, MapsActivity::class.java)
+        intent.putExtra("VarIdRuta", idRuta)
         intent.putExtra("VarPuntos", puntos)
         startActivity(intent)
     }

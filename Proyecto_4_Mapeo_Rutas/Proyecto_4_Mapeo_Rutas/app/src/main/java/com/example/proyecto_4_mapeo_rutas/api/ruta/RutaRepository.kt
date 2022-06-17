@@ -73,6 +73,20 @@ class RutaRepository {
         })
     }
 
+    fun vaciarPuntos(id:Long, listener: VaciarPuntosListener) {
+        retrofitService.vaciarPuntos(id).enqueue(object : retrofit2.Callback<Response> {
+            override fun onFailure(call: retrofit2.Call<Response>, t: Throwable) {
+                listener.onVaciarPuntosError(t)
+            }
+            override fun onResponse(
+                call: retrofit2.Call<Response>,
+                response: retrofit2.Response<Response>
+            ) {
+                listener.vaciarPuntosReady(response.body()!!)
+            }
+        })
+    }
+
     interface RutaListener {
         fun getListaRutaReady(ruta: ArrayList<Ruta>)
         fun onRutaListError(t: Throwable)
@@ -91,6 +105,11 @@ class RutaRepository {
     interface DeleteRutaListener {
         fun deleteRutaReady(res: Response)
         fun onRutaDeleteError(t: Throwable)
+    }
+
+    interface VaciarPuntosListener {
+        fun vaciarPuntosReady(res: Response)
+        fun onVaciarPuntosError(t: Throwable)
     }
 
 }

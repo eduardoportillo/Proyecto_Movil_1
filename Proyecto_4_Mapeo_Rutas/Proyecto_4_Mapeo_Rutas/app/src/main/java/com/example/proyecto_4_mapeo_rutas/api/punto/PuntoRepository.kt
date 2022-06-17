@@ -1,8 +1,6 @@
 package com.example.proyecto_4_mapeo_rutas.api.punto
 
-import com.example.proyecto_4_mapeo_rutas.api.punto.JsonPuntoService
 import com.example.proyecto_4_mapeo_rutas.models.Punto
-import com.example.proyecto_4_mapeo_rutas.models.Ruta
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -32,8 +30,27 @@ class PuntoRepository {
         })
     }
 
+    fun createPunto(punto: Punto, listener: CreatePuntoListener) {
+        retrofitService.createPunto(punto).enqueue(object : retrofit2.Callback<Punto> {
+            override fun onFailure(call: retrofit2.Call<Punto>, t: Throwable) {
+                listener.onPuntoCreateError(t)
+            }
+            override fun onResponse(
+                call: retrofit2.Call<Punto>,
+                response: retrofit2.Response<Punto>
+            ) {
+                listener.createPuntoReady(response.body()!!)
+            }
+        })
+    }
+
     interface PuntoListener {
         fun getListaPuntoReady(puntos: ArrayList<Punto>)
         fun onPuntoListError(t: Throwable)
+    }
+
+    interface CreatePuntoListener {
+        fun createPuntoReady(ruta: Punto)
+        fun onPuntoCreateError(t: Throwable)
     }
 }
