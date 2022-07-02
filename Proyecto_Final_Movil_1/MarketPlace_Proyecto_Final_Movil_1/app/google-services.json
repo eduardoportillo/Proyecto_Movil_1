@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "403764285238",
+    "project_id": "fakemarketplace-d6aa8",
+    "storage_bucket": "fakemarketplace-d6aa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403764285238:android:6f5e5e28b1b78486172d97",
+        "android_client_info": {
+          "package_name": "com.moviles.marketplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403764285238-v6kuq2skcn7i6ev18kr10s6jkovc94sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcPe0HWbuuOywfRK0Ujyu_C45OxgeAjXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403764285238-v6kuq2skcn7i6ev18kr10s6jkovc94sa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

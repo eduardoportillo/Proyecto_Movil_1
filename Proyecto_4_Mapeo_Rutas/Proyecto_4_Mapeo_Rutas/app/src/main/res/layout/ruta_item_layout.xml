@@ -36,6 +36,7 @@
         android:layout_marginTop="20dp"
         android:background="#4286f4"
         android:text="@string/eliminar"
+        app:layout_constraintEnd_toStartOf="@+id/btnVer"
         app:layout_constraintStart_toEndOf="@+id/btnEdit"
         app:layout_constraintTop_toBottomOf="@+id/lblName"
         tools:ignore="TextContrastCheck" />
@@ -48,8 +49,6 @@
         android:text="@string/ver_puntos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toEndOf="@+id/btnDelete"
         app:layout_constraintTop_toBottomOf="@+id/lblName"
         app:layout_constraintVertical_bias="0.846"
         tools:ignore="TextContrastCheck" />
