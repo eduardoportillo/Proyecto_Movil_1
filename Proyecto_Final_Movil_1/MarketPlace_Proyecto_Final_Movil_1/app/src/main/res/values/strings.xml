@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="default_notification_channel_id">defaultchannel</string>
+    <string name="channel_notification_chat_marketplace">Notificaciones de Marketplace</string>
+    <string name="channel_description_chat_marketplace">Notificaciones recibidas por la compra venta de articulos</string>
 </resources>
