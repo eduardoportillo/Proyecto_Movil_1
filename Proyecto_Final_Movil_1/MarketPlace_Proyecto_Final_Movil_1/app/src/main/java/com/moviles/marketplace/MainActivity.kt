@@ -11,14 +11,16 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.messaging.FirebaseMessaging
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
+import com.moviles.marketplace.api.ChatRepository
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.ActivityMainBinding
-import com.moviles.marketplace.models.Product
-import com.moviles.marketplace.models.User
-import retrofit2.http.GET
+import com.moviles.marketplace.models.*
+import com.example.marketplace.models.Chat
 
-class MainActivity : AppCompatActivity(), ProductRepository.GetProductByUserListener, UserRepository.GetUserListener {
+
+class MainActivity : AppCompatActivity(), ProductRepository.GetProductByUserListener,
+    UserRepository.GetUserListener, ChatRepository.GetChatByIdListener, ChatRepository.GetMessageForChatListener{
 
     private lateinit var binding: ActivityMainBinding
 
@@ -51,9 +53,13 @@ class MainActivity : AppCompatActivity(), ProductRepository.GetProductByUserList
     }
 
     private fun setupFirebaseToken() { // TODO setupFirebaseToken() se tiene que poner en el Login
-        FirebaseMessaging.getInstance().token.addOnCompleteListener{ task ->
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.w(ContentValues.TAG, "Error al obtener el token de registro de FCM", task.exception)
+                Log.w(
+                    ContentValues.TAG,
+                    "Error al obtener el token de registro de FCM",
+                    task.exception
+                )
                 return@addOnCompleteListener
             }
 
@@ -63,14 +69,18 @@ class MainActivity : AppCompatActivity(), ProductRepository.GetProductByUserList
         }
     }
 
-    fun runAllFetch(){
+    fun runAllFetch() {
         fetchProduct()
         fetchUser()
+        fetchChat()
+        fetchMenssage()
     }
+
     //@GET("/api/me") fun getUser()
     private fun fetchUser() {
         UserRepository().getUser(this)
     }
+
     override fun getUserReady(user: User) {
         Log.d("response_api", user.toString())
     }
@@ -83,10 +93,41 @@ class MainActivity : AppCompatActivity(), ProductRepository.GetProductByUserList
     private fun fetchProduct() {
         ProductRepository().getProduct(this)
     }
+
     override fun getProductByUserReady(products: ArrayList<Product>) {
         Log.d("response_api", products.toString())
     }
-    override fun onProductByUserGetError(t: Throwable) {
+
+    override fun onProductByUserError(t: Throwable) {
+        Log.d("error_response_api", t.toString())
+
+    }
+
+
+    //Chat
+    private fun fetchChat() {
+        ChatRepository().getChatById(14,this)
+    }
+
+    override fun getChatByIdReady(chat: Chat) {
+        Log.d("response_api", chat.toString())
+    }
+
+    override fun onGetChatByIdError(t: Throwable) {
+        Log.d("error_response_api", t.toString())
+    }
+
+
+
+    //Menssage
+    private fun fetchMenssage() {
+        ChatRepository().getMessageForChat(14,this)
+    }
+    override fun getMessageForChatReady(menssage: ArrayList<MenssageModel>) {
+        Log.d("response_api", menssage.toString())
+    }
+
+    override fun onGetMessageForChatError(t: Throwable) {
         Log.d("error_response_api", t.toString())
     }
 

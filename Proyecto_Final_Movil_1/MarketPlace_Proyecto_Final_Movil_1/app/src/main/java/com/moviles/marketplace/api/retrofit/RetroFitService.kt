@@ -8,7 +8,6 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface RetroFitService {
-
     //Auth
     @POST("/api/userregister")
     fun registerUser(@Body User: User): Call<User>
@@ -63,10 +62,23 @@ interface RetroFitService {
     @DELETE("/api/categories/{id}")
     fun deleteCategory(@Path("id") id: Long): Call<Category>
 
-    //Chats TODO implementar Chat
-//    @GET("/api/products/{id}")
-//    fun getChatById(@Path("id") id: Long): Call<Chat>
-//
-//    @POST("/api/chats")
-//    fun createChat(@Body chat: Chat): Call<Chat>
+    //Chats
+    @GET("/api/chats/{id}")
+    fun getChatById(@Path("id") id: Long): Call<Chat>
+
+    @GET("/api/chats/{id}/messages")
+    fun getMessageForChat(@Path("id") id: Long): Call<ArrayList<MenssageModel>>
+
+    @POST("/api/chats")
+    fun createChat(@Body chat: Chat): Call<Chat>
+
+    @POST("/api/messages")
+    fun addMenssageWithChat(@Body message: MenssageModel): Call<MenssageModel>
+
+    @POST("/api/messages")
+    fun addLocationWithChat(@Body message: MenssageModel): Call<MenssageModel>
+
+    @Multipart //TODO ver como implementar al final con Programación Android by AristiDevs y en ChatRepository
+    @POST("/api/messages")
+    fun addPhotoWithChat(@Body message: MenssageModel): Call<MenssageModel>
 }

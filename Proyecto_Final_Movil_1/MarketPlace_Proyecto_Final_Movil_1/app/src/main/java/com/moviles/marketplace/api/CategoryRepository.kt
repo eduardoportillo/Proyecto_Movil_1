@@ -1,11 +1,9 @@
-package com.moviles.marketplace
+package com.moviles.marketplace.api
 
-import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.api.retrofit.RetroFit
 import com.moviles.marketplace.api.retrofit.RetroFitService
 import com.moviles.marketplace.models.Category
 import com.moviles.marketplace.models.Product
-import retrofit2.http.GET
 
 class CategoryRepository {
     private val retrofitService: RetroFitService

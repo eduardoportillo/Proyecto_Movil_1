@@ -2,6 +2,7 @@ package com.example.marketplace.models
 
 import com.moviles.marketplace.models.Product
 import com.moviles.marketplace.models.User
+import java.io.Serializable
 
 data class Chat (
     val id: Long? = null,
@@ -19,7 +20,7 @@ data class Chat (
     val buyer: User? = null,
     val seller: User? = null,
     val product: Product? = null
-)
+): Serializable
 
 
 
