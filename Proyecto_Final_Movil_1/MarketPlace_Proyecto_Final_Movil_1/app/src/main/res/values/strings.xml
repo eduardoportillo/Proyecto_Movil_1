@@ -6,4 +6,7 @@
     <string name="default_notification_channel_id">defaultchannel</string>
     <string name="channel_notification_chat_marketplace">Notificaciones de Marketplace</string>
     <string name="channel_description_chat_marketplace">Notificaciones recibidas por la compra venta de articulos</string>
+    <string name="login">Login</string>
+    <string name="register_me">Register Me</string>
+    <string name="todo">TODO</string>
 </resources>
