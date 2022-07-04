@@ -12,6 +12,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.moviles.marketplace.MainActivity
+import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -40,7 +41,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val name = getString(R.string.channel_notification_chat_marketplace)
             val descriptionText = getString(R.string.channel_description_chat_marketplace)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+            val channel = NotificationChannel(CHANNEL_Id, name, importance).apply {
                 description = descriptionText
             }
             // Register the channel with the system
@@ -58,7 +59,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
 
-        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        var builder = NotificationCompat.Builder(this, CHANNEL_Id)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(textTitle)
             .setContentText(textContent)
@@ -74,11 +75,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun sendRegistrationToServer(token: String?) {
         //TODO implementar el token en la peticion de login
         Log.d(TAG, "sendRegistrationTokenToServer($token)")
+        sharedPref.setNotificationId(token!!) //TODO ver si se puede implementar con sharedPreference
     }
 
     companion object {
         private const val TAG = "MyFirebaseMsgService"
-        private const val CHANNEL_ID = "defaultchannel"
+        private const val CHANNEL_Id = "defaultchannel"
     }
 
 }
