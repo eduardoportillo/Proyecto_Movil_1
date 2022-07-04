@@ -6,7 +6,7 @@ class SharedPref(val context: Context) {
     val SHARED_NAME = "SharedDB"
     val storage = context.getSharedPreferences(SHARED_NAME, 0)
 
-    fun setToken(token: String) {
+    fun setToken(token: String?) {
         storage.edit().putString("token", token).apply()
     }
 
@@ -14,7 +14,7 @@ class SharedPref(val context: Context) {
         return storage.getString("token", "")!!
     }
 
-    fun setNotificationId(notificationId: String) {
+    fun setNotificationId(notificationId: String?) {
         storage.edit().putString("notificationId", notificationId).apply()
     }
 

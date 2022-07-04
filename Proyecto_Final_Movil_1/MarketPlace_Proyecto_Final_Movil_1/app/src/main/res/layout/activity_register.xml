@@ -122,13 +122,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="128dp"
         android:background="@drawable/button_rectangle_pink"
         android:text="Register"
         android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintVertical_bias="0.433" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

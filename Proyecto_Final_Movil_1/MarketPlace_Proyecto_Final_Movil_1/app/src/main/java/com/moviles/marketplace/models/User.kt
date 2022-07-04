@@ -7,6 +7,7 @@ data class User(
     val name: String? = null,
     val email: String? = null,
     val password: String? = null,
-    val notification_id: String? = null
+    val notification_id: String? = null,
+    val access_token: String? = null
 ): Serializable
 

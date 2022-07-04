@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".StartUIActivity"
+            android:name=".ui.activities.StartUI"
             android:exported="false" />
         <activity
             android:name=".ui.activities.auth.RegisterActivity"

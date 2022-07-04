@@ -1,15 +1,17 @@
 package com.moviles.marketplace.ui.activities
 
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import com.moviles.marketplace.MarketPlaceApplication
 import com.moviles.marketplace.R
-import com.moviles.marketplace.databinding.ActivityMainBinding
 import com.moviles.marketplace.databinding.ActivityStartUiActivityBinding
 
 class StartUI : AppCompatActivity() {
@@ -33,8 +35,27 @@ class StartUI : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        MarketPlaceApplication.sharedPref.setToken("52|DeXTcChmhXz2votQKqn4L9EIHZhwcim50BMvy2DU")
-
         setupFirebaseToken()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    private fun setupFirebaseToken() { // TODO setupFirebaseToken() se tiene que poner en el Login
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(
+                    ContentValues.TAG,
+                    "Error al obtener el token de registro de FCM",
+                    task.exception
+                )
+                return@addOnCompleteListener
+            }
+
+            val token = task.result
+
+            Log.d("TOKEN_FIREBASE", token)
+        }
     }
 }

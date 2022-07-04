@@ -34,7 +34,13 @@ class UserRepository {
                 call: retrofit2.Call<User>,
                 response: retrofit2.Response<User>
             ) {
-                listener.LoginUserReady(response.body()!!)
+                if (response.isSuccessful) {
+                    listener.LoginUserReady(response.body()!!)
+                } else if (response.code() == 401) {
+                    listener.onUserLoginError(Throwable("unauthorized"))
+                } else {
+                    listener.onUserLoginError(Throwable("Error desconocido"))
+                }
             }
         })
     }

@@ -1,5 +1,6 @@
 package com.moviles.marketplace.ui.activities.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.moviles.marketplace.R
@@ -15,5 +16,17 @@ class RegisterActivity : AppCompatActivity() {
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        configButton()
+    }
+
+    fun configButton() {
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+        binding.btnRegister.setOnClickListener {
+
+        }
     }
 }
