@@ -22,4 +22,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_product_user">Tus Productos</string>
+    <string name="title_user_info">Tu Info</string>
 </resources>
