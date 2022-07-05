@@ -11,7 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.moviles.marketplace.MainActivity
+import com.moviles.marketplace.BottomNavigationActivity
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 
@@ -53,7 +53,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun showNotification(textTitle: String, textContent: String, notificationId: Int) {
         createNotificationChannel()
         // TODO aqui se deberia redireccionar al activity del chat de la notificacion
-        val intent = Intent(this, MainActivity::class.java).apply {
+        val intent = Intent(this, BottomNavigationActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)

@@ -1,16 +1,15 @@
 package com.moviles.marketplace.ui.activities.auth
 
-import android.content.ClipData.newIntent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.moviles.marketplace.BottomNavigationActivity
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.ActivityLoginBinding
 import com.moviles.marketplace.models.User
-import com.moviles.marketplace.ui.activities.StartUI
 
 class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener {
 
@@ -28,7 +27,7 @@ class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener {
 
     fun checkUserLogin() {
         if (sharedPref.getToken().isNotEmpty()) {
-            startActivity(Intent(this, StartUI::class.java))
+            startActivity(Intent(this, BottomNavigationActivity::class.java))
             finish()
         }
     }
@@ -60,7 +59,7 @@ class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener {
 
     override fun LoginUserReady(user: User) {
             sharedPref.setToken(user.access_token)
-            startActivity(Intent(this, StartUI::class.java))
+            startActivity(Intent(this, BottomNavigationActivity::class.java))
             finish()
     }
 

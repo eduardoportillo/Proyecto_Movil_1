@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_market_place"
+          android:title="MarketPlace"
+          android:icon="@drawable/ic_baseline_shopping_cart" />
+
+    <item android:id="@+id/nav_product_user"
+    android:title="Productos Usuario"
+    android:icon="@drawable/ic_baseline_user_product" />
+
+    <item android:id="@+id/nav_chat"
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_chat" />
+
+    <item android:id="@+id/nav_user"
+        android:title="User Info"
+        android:icon="@drawable/ic_baseline_person" />
+</menu>
