@@ -26,8 +26,6 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
 
         _binding = FragmentMarketplaceBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
         return root
     }
 
@@ -37,14 +35,14 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     }
 
     fun fetchSetup(){
-        fetchPuntosList()
+        fetchProductSerchList()
     }
 
     override fun onVerProductClick(idProduct: Long) {
         // TODO: Implementar cuando se oprima en el producto
     }
 
-    private fun fetchPuntosList() {
+    private fun fetchProductSerchList() {
         val serch = Search(
             latitude= "-17.774281",
             longitude= "-63.184093",

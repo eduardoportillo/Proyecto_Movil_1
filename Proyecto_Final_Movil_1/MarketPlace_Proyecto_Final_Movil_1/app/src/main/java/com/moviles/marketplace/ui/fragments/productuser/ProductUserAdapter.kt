@@ -1,5 +1,4 @@
-package com.moviles.marketplace.ui.fragments.marketplace
-
+package com.moviles.marketplace.ui.fragments.productuser
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,17 +11,21 @@ import com.bumptech.glide.Glide
 import com.moviles.marketplace.R
 import com.moviles.marketplace.models.Product
 
+class ProductUserAdapter(
+    val data: ArrayList<Product>,
+    val listener: ProductUserAdapter.ProductListUserEventListener
+) : RecyclerView.Adapter<ProductUserAdapter.ProductUserViewHolder>() {
 
-class MarketPlaceAdapter(val data: ArrayList<Product>, val listener: ProductListEventListener) :
-    RecyclerView.Adapter<MarketPlaceAdapter.ProductViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ProductUserAdapter.ProductUserViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_grid_product, parent, false)
-        return ProductViewHolder(view)
+        return ProductUserAdapter.ProductUserViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductUserAdapter.ProductUserViewHolder, position: Int) {
         val product = data[position]
         val context = holder.imageProductItem.context
 
@@ -45,16 +48,14 @@ class MarketPlaceAdapter(val data: ArrayList<Product>, val listener: ProductList
         return data.size
     }
 
-    class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ProductUserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageProductItem: ImageView = view.findViewById(R.id.imageProductItem)
         val titleProductItem: TextView = view.findViewById(R.id.titleProductItem)
         var precioProductItem: TextView = itemView.findViewById(R.id.precioProductItem)
     }
 
-    interface ProductListEventListener {
-        fun onVerProductClick(idProduct: Long)
+    interface ProductListUserEventListener {
+        fun onVerProductUserClick(idProduct: Long)
     }
 
-
 }
-
