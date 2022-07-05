@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moviles.marketplace.BottomNavigationActivity
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.FragmentUserInfoBinding

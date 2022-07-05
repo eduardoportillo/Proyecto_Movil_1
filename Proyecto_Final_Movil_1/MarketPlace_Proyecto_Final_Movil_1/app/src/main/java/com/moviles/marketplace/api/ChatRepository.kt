@@ -12,6 +12,21 @@ class ChatRepository {
         retrofitService = RetroFit.getRetrofitService()
     }
 
+    //@GET("/api/chats/")
+    fun getChat(listener: GetChatListener) {
+        retrofitService.getChat().enqueue(object : retrofit2.Callback<Chat> {
+            override fun onFailure(call: retrofit2.Call<Chat>, t: Throwable) {
+                listener.onGetChatError(t)
+            }
+            override fun onResponse(
+                call: retrofit2.Call<Chat>,
+                response: retrofit2.Response<Chat>
+            ) {
+                listener.getChatReady(response.body()!!)
+            }
+        })
+    }
+
     //@GET("/api/chats/{id}")
     fun getChatById(id:Long, listener: GetChatByIdListener) {
         retrofitService.getChatById(id).enqueue(object : retrofit2.Callback<Chat> {
@@ -85,6 +100,10 @@ class ChatRepository {
         })
     }
 
+    interface GetChatListener {
+        fun getChatReady(chat: Chat)
+        fun onGetChatError(t: Throwable)
+    }
 
     interface GetChatByIdListener {
         fun getChatByIdReady(chat: Chat)

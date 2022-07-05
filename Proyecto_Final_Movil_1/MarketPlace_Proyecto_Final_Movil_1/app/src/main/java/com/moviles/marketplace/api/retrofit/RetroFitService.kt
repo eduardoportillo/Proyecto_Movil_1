@@ -63,6 +63,9 @@ interface RetroFitService {
     fun deleteCategory(@Path("id") id: Long): Call<Category>
 
     //Chats
+    @GET("/api/chats/")
+    fun getChat(): Call<Chat>
+
     @GET("/api/chats/{id}")
     fun getChatById(@Path("id") id: Long): Call<Chat>
 
