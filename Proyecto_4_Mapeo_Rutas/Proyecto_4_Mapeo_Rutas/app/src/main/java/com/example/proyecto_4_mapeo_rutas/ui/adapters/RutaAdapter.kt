@@ -1,6 +1,5 @@
 package com.example.proyecto_4_mapeo_rutas.ui.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_4_mapeo_rutas.R
-import com.example.proyecto_4_mapeo_rutas.api.ruta.RutaRepository
 import com.example.proyecto_4_mapeo_rutas.models.Ruta
-import com.example.proyecto_4_mapeo_rutas.ui.activities.FormActivity
-import com.example.proyecto_4_mapeo_rutas.ui.activities.MapsActivity
 //import android.content.Intent
 
 class RutaAdapter(val data: ArrayList<Ruta>, val listener: RutaListEventListener) : RecyclerView.Adapter<RutaAdapter.RutaViewHolder>() {

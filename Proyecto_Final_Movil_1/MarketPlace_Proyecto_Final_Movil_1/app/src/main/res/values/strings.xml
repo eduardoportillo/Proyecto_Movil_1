@@ -25,4 +25,7 @@
     <string name="title_chat">Chat</string>
     <string name="title_product_user">Tus Productos</string>
     <string name="title_user_info">Tu Info</string>
+    <string name="vender_button">Vender</string>
+    <string name="filtrar_button">Filtrar Por categoria</string>
+    <string name="ubicacion_button">Cambiar de Ubicación</string>
 </resources>
