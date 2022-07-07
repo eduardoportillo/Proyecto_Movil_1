@@ -2,6 +2,7 @@ package com.moviles.marketplace.ui.fragments.chat
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +58,7 @@ class ChatFragment : Fragment(), ChatAdapter.ChatListEventListener,
 
 
     override fun onGetChatError(t: Throwable) {
-        TODO("Not yet implemented")
+        Log.d("error_response_api", t.toString())
     }
 
 }

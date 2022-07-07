@@ -7,38 +7,40 @@
     tools:context=".ui.fragments.marketplace.MarketPlaceFragment">
 
     <Button
-        android:id="@+id/venderButton"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="12dp"
-        android:text="@string/vender_button"
-        app:layout_constraintStart_toEndOf="@+id/ubicacionButton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/filtrarButton"
-        android:layout_width="132dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/filtrar_button"
-        app:layout_constraintStart_toEndOf="@+id/venderButton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ubicacionButton"
+        android:id="@+id/btnFilterUbication"
         android:layout_width="149dp"
         android:layout_height="65dp"
         android:text="@string/ubicacion_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnVender"
+        android:layout_width="100dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="12dp"
+        android:text="@string/vender_button"
+        app:layout_constraintStart_toEndOf="@+id/btnFilterUbication"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFilterCategory"
+        android:layout_width="132dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/filtrar_button"
+        app:layout_constraintStart_toEndOf="@+id/btnVender"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMarketPlace"
-        android:layout_width="match_parent"
-        android:layout_height="523dp"
+        android:layout_width="411dp"
+        android:layout_height="534dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVender" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

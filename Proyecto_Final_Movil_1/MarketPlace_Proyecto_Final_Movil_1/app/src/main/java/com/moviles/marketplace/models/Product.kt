@@ -14,7 +14,7 @@ data class Product(
 
     val user_id: Long? = null,
 
-    val photos: ArrayList<Photo>? = null, //todo verify if it is an arraylist or a list
+    val photos: ArrayList<Photo>? = null,
     val category: Category? = null,
 
     val distance: Long? = null,

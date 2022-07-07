@@ -1,5 +1,6 @@
 package com.moviles.marketplace.ui.fragments.marketplace
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import com.example.marketplace.models.Search
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.FragmentMarketplaceBinding
 import com.moviles.marketplace.models.Product
+import com.moviles.marketplace.ui.activities.MapsRadius
 
 class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListener,
     ProductRepository.GetAllProductsWithSearchListener {
@@ -30,10 +32,18 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
 
     override fun onResume() {
         super.onResume()
+        setupButtons()
         fetchSetup()
     }
 
-    fun fetchSetup(){
+    private fun setupButtons(){
+        binding.btnFilterUbication.setOnClickListener{
+            val editProfileIntent = Intent(getActivity(), MapsRadius::class.java)
+            startActivity(editProfileIntent)
+        }
+    }
+
+    private fun fetchSetup(){
         fetchProductSerchList()
     }
 

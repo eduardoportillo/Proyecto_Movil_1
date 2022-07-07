@@ -45,7 +45,7 @@ class ProductUserFragment : Fragment(), ProductUserAdapter.ProductListUserEventL
     }
 
     override fun onVerProductUserClick(idProduct: Long) {
-        TODO("Not yet implemented")
+        //TODO implementar cuando se oprima el boton de ver producto
     }
 
     override fun getProductByUserReady(products: ArrayList<Product>) {
