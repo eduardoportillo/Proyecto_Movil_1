@@ -64,7 +64,7 @@ interface RetroFitService {
 
     //Chats
     @GET("/api/chats/")
-    fun getChat(): Call<Chat>
+    fun getChat(): Call<ArrayList<Chat>>
 
     @GET("/api/chats/{id}")
     fun getChatById(@Path("id") id: Long): Call<Chat>

@@ -23,7 +23,6 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentMarketplaceBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
@@ -38,9 +37,6 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
         fetchProductSerchList()
     }
 
-    override fun onVerProductClick(idProduct: Long) {
-        // TODO: Implementar cuando se oprima en el producto
-    }
 
     private fun fetchProductSerchList() {
         val serch = Search(
@@ -49,6 +45,10 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
             radius= 10000,
         )
         ProductRepository().getAllProductsWithSearch(serch, this)
+    }
+
+    override fun onVerProductClick(idProduct: Long) {
+        // TODO: Implementar cuando se oprima en el producto
     }
 
     override fun getAllProductsWithSearchReady(products: ArrayList<Product>) {

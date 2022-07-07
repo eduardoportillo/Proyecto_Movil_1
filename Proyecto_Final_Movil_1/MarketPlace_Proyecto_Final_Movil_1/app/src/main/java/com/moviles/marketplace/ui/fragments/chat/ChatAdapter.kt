@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.marketplace.models.Chat
 import com.moviles.marketplace.R
 import com.moviles.marketplace.models.Product
 import com.moviles.marketplace.ui.fragments.marketplace.MarketPlaceAdapter
 
-class ChatAdapter(val data: ArrayList<Product>, val listener: ChatListEventListener) :
+class ChatAdapter(val data: ArrayList<Chat>, val listener: ChatListEventListener) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
@@ -24,6 +25,9 @@ class ChatAdapter(val data: ArrayList<Product>, val listener: ChatListEventListe
         val chat = data[position]
 
         holder.idChatLabel.text = chat.id.toString()
+        holder.nombreVendedorLabel.text = chat.seller?.name.toString()
+        holder.compradorChatLabel.text = chat.buyer?.name.toString()
+        holder.productoChatLabel.text = chat.product?.title.toString()
     }
 
     override fun getItemCount(): Int {
