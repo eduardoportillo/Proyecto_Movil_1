@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.marketplace.models.Search
+import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.FragmentMarketplaceBinding
 import com.moviles.marketplace.models.Product
@@ -44,17 +45,17 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     }
 
     private fun fetchSetup(){
-        fetchProductSerchList()
+        fetchProductSearchList()
     }
 
 
-    private fun fetchProductSerchList() {
-        val serch = Search(
-            latitude= "-17.774281",
-            longitude= "-63.184093",
-            radius= 10000,
+    private fun fetchProductSearchList() {
+        val search = Search(
+            latitude= sharedPref.getLatitude(),
+            longitude= sharedPref.getLongitude(),
+            radius= sharedPref.getRadius(),
         )
-        ProductRepository().getAllProductsWithSearch(serch, this)
+        ProductRepository().getAllProductsWithSearch(search, this)
     }
 
     override fun onVerProductClick(idProduct: Long) {

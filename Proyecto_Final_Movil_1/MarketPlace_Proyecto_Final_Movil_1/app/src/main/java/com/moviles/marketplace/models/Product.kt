@@ -16,6 +16,4 @@ data class Product(
 
     val photos: ArrayList<Photo>? = null,
     val category: Category? = null,
-
-    val distance: Long? = null,
 ): Serializable

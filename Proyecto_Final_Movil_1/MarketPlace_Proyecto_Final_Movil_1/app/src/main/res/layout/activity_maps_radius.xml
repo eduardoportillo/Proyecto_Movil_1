@@ -33,7 +33,7 @@
         tools:ignore="TextContrastCheck" />
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/seekBarRadius"
         android:layout_width="184dp"
         android:layout_height="320dp"
         android:rotation="270"
