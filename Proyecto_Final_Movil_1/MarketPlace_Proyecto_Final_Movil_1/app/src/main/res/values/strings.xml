@@ -30,4 +30,6 @@
     <string name="todo1">TODO</string>
     <string name="notification_id">Notification_id:</string>
     <string name="title_activity_maps_radius">MapsRadius</string>
+    <string name="guardar_punto" />
+    <string name="enviar_coordenadas_y_radio">enviar coordenadas y radio</string>
 </resources>
