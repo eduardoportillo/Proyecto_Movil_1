@@ -32,4 +32,10 @@
     <string name="title_activity_maps_radius">MapsRadius</string>
     <string name="guardar_punto" />
     <string name="enviar_coordenadas_y_radio">enviar coordenadas y radio</string>
+    <string name="titulo">Titulo:</string>
+    <string name="descripci_n">Descripción:</string>
+    <string name="precio">Precio:</string>
+    <string name="guardar">Guardar</string>
+    <string name="seleccionar_ubicacci_n">Seleccionar Ubicacción</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

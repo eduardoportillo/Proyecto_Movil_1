@@ -14,6 +14,7 @@ import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.FragmentMarketplaceBinding
 import com.moviles.marketplace.models.Product
 import com.moviles.marketplace.ui.activities.MapsRadius
+import com.moviles.marketplace.ui.activities.ProductFormActivity
 
 class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListener,
     ProductRepository.GetAllProductsWithSearchListener {
@@ -39,9 +40,15 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
 
     private fun setupButtons(){
         binding.btnFilterUbication.setOnClickListener{
-            val editProfileIntent = Intent(getActivity(), MapsRadius::class.java)
+            val editProfileIntent = Intent(activity, MapsRadius::class.java)
             startActivity(editProfileIntent)
         }
+
+        binding.btnVender.setOnClickListener{
+            val editProfileIntent = Intent(activity, ProductFormActivity::class.java)
+            startActivity(editProfileIntent)
+        }
+
     }
 
     private fun fetchSetup(){
