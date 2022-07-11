@@ -1,22 +1,23 @@
 package com.moviles.marketplace.ui.activities
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.moviles.marketplace.R
+import androidx.appcompat.app.AppCompatActivity
 import com.moviles.marketplace.api.CategoryRepository
-import com.moviles.marketplace.api.ChatRepository
-import com.moviles.marketplace.databinding.ActivityLoginBinding
+import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.ActivityProductFormBinding
 import com.moviles.marketplace.models.Category
+import com.moviles.marketplace.models.Product
+import com.moviles.marketplace.ui.fragments.MapsFragment
 
-class ProductFormActivity : AppCompatActivity(), CategoryRepository.CreateCategoryListener,
-    CategoryRepository.GetCategoriesListener, AdapterView.OnItemSelectedListener {
+
+class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductListener,
+    CategoryRepository.CreateCategoryListener,
+    CategoryRepository.GetCategoriesListener, AdapterView.OnItemSelectedListener, MapsFragment.latLngEventListener {
 
     private lateinit var binding: ActivityProductFormBinding
 
@@ -25,13 +26,16 @@ class ProductFormActivity : AppCompatActivity(), CategoryRepository.CreateCatego
     private var categoryId: Long? = null
     private lateinit var categories: ArrayList<Category>
 
+
+    private lateinit var latitude: String
+    private lateinit var longitude: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(com.moviles.marketplace.R.layout.activity_login)
 
         binding = ActivityProductFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
     }
 
@@ -58,7 +62,21 @@ class ProductFormActivity : AppCompatActivity(), CategoryRepository.CreateCatego
                 }
             }
         }
-        binding.btnSiguente.setOnClickListener {}
+
+
+        binding.btnSiguente.setOnClickListener {
+            val product = Product(
+                title = binding.tituloInput.text.toString(),
+                description = binding.descripcionInput.text.toString(),
+                price = binding.percioInput.text.toString().toDouble(),
+                category_id = categoryId,
+                longitude = this.longitude,
+                latitude = this.latitude
+
+            )
+            ProductRepository().createProduct(product, this)
+        }
+
         binding.btnCancelar.setOnClickListener { finish() }
     }
 
@@ -68,7 +86,7 @@ class ProductFormActivity : AppCompatActivity(), CategoryRepository.CreateCatego
 
     override fun createCategoryReady(category: Category) {
         binding.errorCategoryLabel.setTextColor(Color.parseColor("#008000"))
-        binding.errorCategoryLabel.text = "Categoria Creada"
+        binding.errorCategoryLabel.text = "          Categoria " + category.name + " Creada"
         fetchGetCategories()
     }
 
@@ -78,7 +96,8 @@ class ProductFormActivity : AppCompatActivity(), CategoryRepository.CreateCatego
 
     override fun getCategoriesReady(categories: ArrayList<Category>) {
         this.categories = categories
-        arrayCategoriesAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item)
+        arrayCategoriesAdapter =
+            ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item)
         for (category in categories) {
             arrayCategoriesAdapter.add(category.name)
         }
@@ -95,8 +114,19 @@ class ProductFormActivity : AppCompatActivity(), CategoryRepository.CreateCatego
         categoryId = categories[positon].id
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {
+    override fun onNothingSelected(p0: AdapterView<*>?) {}
+
+    override fun creteProductReady(product: Product) {
         TODO("Not yet implemented")
     }
+
+    override fun onCreteProductError(t: Throwable) {
+        Log.d("error_response_api", t.toString())
+    }
+
+    override fun latLngSend(latitude: String,longitude: String) {
+        binding.errorCategoryLabel.text = "latitude: " + latitude + " longitude: " + longitude
+    }
+
 }
 

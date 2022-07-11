@@ -6,7 +6,7 @@ data class Product(
     val id: Long? = null,
     val title: String? = null,
     val description: String? = null,
-    val price: String? = null,
+    val price: Double? = null,
     val latitude: String? = null,
     val longitude: String? = null,
 

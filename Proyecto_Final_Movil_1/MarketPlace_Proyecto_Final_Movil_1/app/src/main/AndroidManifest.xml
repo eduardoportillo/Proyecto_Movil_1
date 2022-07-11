@@ -19,37 +19,20 @@
         android:theme="@style/Theme.MarketPlace_Proyecto_Final_Movil_1"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".UploadFotoActivity"
-            android:exported="false" />
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
 
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" /> <!-- metas firebase -->
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_launcher_foreground" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/purple_500" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_id" />
+            android:value="${MAPS_KEY}" />
+
+        <activity
+            android:name=".ui.activities.UploadFotoActivity"
+            android:exported="false" />
 
         <activity
             android:name=".ui.activities.MapsRadius"
             android:exported="false"
             android:label="@string/title_activity_maps_radius" />
+
         <activity
             android:name=".ui.activities.ProductFormActivity"
             android:exported="false" />
@@ -77,6 +60,19 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_launcher_foreground" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/purple_500" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
     </application>
 
 </manifest>

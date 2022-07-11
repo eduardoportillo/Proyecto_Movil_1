@@ -55,6 +55,5 @@ class MarketPlaceAdapter(val data: ArrayList<Product>, val listener: ProductList
         fun onVerProductClick(idProduct: Long)
     }
 
-
 }
 

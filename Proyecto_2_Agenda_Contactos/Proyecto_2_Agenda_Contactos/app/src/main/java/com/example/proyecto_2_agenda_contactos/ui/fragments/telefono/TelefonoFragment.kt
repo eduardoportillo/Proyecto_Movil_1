@@ -25,9 +25,6 @@ class TelefonoFragment : Fragment() {
         setFragmentResultListener("dataInfoContactoFragment"){key, bundle-> val contacto =
             bundle.getSerializable("contactoEnviado") as Contacto
         } // TODO intentando recibir dato de otro fragment
-
-
-
     }
 
     override fun onCreateView(
