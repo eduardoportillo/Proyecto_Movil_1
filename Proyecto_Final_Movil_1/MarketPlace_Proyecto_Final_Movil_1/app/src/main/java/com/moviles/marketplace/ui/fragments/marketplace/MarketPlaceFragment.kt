@@ -13,8 +13,10 @@ import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.FragmentMarketplaceBinding
 import com.moviles.marketplace.models.Product
+import com.moviles.marketplace.ui.activities.InfoProductActivity
 import com.moviles.marketplace.ui.activities.MapsRadius
 import com.moviles.marketplace.ui.activities.ProductFormActivity
+import com.moviles.marketplace.ui.activities.UploadFotoActivity
 
 class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListener,
     ProductRepository.GetAllProductsWithSearchListener {
@@ -48,6 +50,9 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
             val editProfileIntent = Intent(activity, ProductFormActivity::class.java)
             startActivity(editProfileIntent)
         }
+        binding.btnFilterCategory.setOnClickListener{
+
+        }
 
     }
 
@@ -66,7 +71,9 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     }
 
     override fun onVerProductClick(idProduct: Long) {
-        // TODO: Implementar cuando se oprima en el producto
+        val productForm = Intent(activity, InfoProductActivity::class.java)
+        productForm.putExtra("idProduct", idProduct)
+        startActivity(productForm)
     }
 
     override fun getAllProductsWithSearchReady(products: ArrayList<Product>) {
@@ -78,4 +85,6 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     override fun onGetAllProductsWithSearchError(t: Throwable) {
         Log.d("error_response_api", t.toString())
     }
+
+
 }

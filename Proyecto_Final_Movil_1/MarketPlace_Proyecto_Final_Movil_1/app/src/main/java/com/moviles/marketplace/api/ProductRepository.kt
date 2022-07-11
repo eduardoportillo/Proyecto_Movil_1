@@ -5,6 +5,9 @@ import com.moviles.marketplace.api.retrofit.RetroFit
 import com.moviles.marketplace.api.retrofit.RetroFitService
 import com.moviles.marketplace.models.Product
 import com.moviles.marketplace.models.Response
+import okhttp3.*
+import retrofit2.Call
+import java.io.File
 
 class ProductRepository {
     private val retrofitService: RetroFitService
@@ -103,9 +106,29 @@ class ProductRepository {
         })
     }
 
-    //@POST("/api/products/{id}/images") TODO implementar @POST("/api/products/{id}/images")
-    //@DELETE("/api/images/{id}") TODO implementar @DELETE("/api/images/{id}")
+    //@POST("/api/products/{id}/images")
+    fun uploadImage(id:Long, imageFile: File, listener: UploadImageListener) {
 
+        var requestImage: MultipartBody.Part? = null
+
+        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile)
+        requestImage = MultipartBody.Part.createFormData("image", imageFile.name, requestFile)
+
+        retrofitService.addProductPhoto(id, requestImage).enqueue(object : retrofit2.Callback<RequestBody> {
+            override fun onFailure(call: Call<RequestBody>, t: Throwable) {
+                listener.onUploadImagehError(t)
+            }
+
+            override fun onResponse(
+                call: Call<RequestBody>,
+                response: retrofit2.Response<RequestBody?>
+            ) {
+                listener.uploadImagehReady(response.body()!!)
+            }
+        })
+    }
+
+    //@DELETE("/api/images/{id}") TODO implementar @DELETE("/api/images/{id}")
     interface GetProductByUserListener {
         fun getProductByUserReady(products: ArrayList<Product>)
         fun onProductByUserError(t: Throwable)
@@ -135,5 +158,12 @@ class ProductRepository {
         fun  getAllProductsWithSearchReady(products: ArrayList<Product>)
         fun onGetAllProductsWithSearchError(t: Throwable)
     }
+
+    interface UploadImageListener {
+        fun  uploadImagehReady(resBody: RequestBody)
+        fun onUploadImagehError(t: Throwable)
+    }
+
+
 }
 

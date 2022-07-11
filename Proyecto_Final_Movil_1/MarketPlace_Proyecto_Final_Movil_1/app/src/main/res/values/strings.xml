@@ -38,4 +38,9 @@
     <string name="guardar">Guardar</string>
     <string name="seleccionar_ubicacci_n">Seleccionar Ubicacción</string>
     <string name="cancelar">Cancelar</string>
+    <string name="all" />
+    <string name="subtitle_activity_main" />
+    <string name="title_activity_main" />
+    <string name="upload" />
+    <string name="subir_foto_y_terminar">Subir Foto y Terminar</string>
 </resources>

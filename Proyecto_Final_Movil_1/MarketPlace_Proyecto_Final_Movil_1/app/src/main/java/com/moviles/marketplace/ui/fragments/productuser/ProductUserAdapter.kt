@@ -36,12 +36,16 @@ class ProductUserAdapter(
                 .into(holder.imageProductItem)
         } else {
             Glide.with(context).clear(holder.imageProductItem)
-            context.getDrawable(R.drawable.student)
+            context.getDrawable(R.drawable.noimage)
         }
 
         holder.titleProductItem.text = product.title
 
         holder.precioProductItem.text = product.price.toString() + " Bs."
+
+        holder.layaoutItemProduct.setOnClickListener{
+            listener.onVerProductUserClick(product.id as Long)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -52,6 +56,7 @@ class ProductUserAdapter(
         val imageProductItem: ImageView = view.findViewById(R.id.imageProductItem)
         val titleProductItem: TextView = view.findViewById(R.id.titleProductItem)
         var precioProductItem: TextView = itemView.findViewById(R.id.precioProductItem)
+        var layaoutItemProduct: View = itemView.findViewById(R.id.layaoutItemProduct)
     }
 
     interface ProductListUserEventListener {

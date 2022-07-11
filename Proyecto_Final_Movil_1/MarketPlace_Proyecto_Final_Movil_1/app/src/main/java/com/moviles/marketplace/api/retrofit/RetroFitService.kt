@@ -4,8 +4,10 @@ import com.example.marketplace.models.Chat
 import com.example.marketplace.models.Search
 import com.moviles.marketplace.models.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+
 
 interface RetroFitService {
     //Auth
@@ -39,9 +41,13 @@ interface RetroFitService {
     @POST("/api/products/search")
     fun getAllProductsWithSearch(@Body search: Search): Call<ArrayList<Product>>
 
-    @Multipart //TODO ver como implementar al final con Programación Android by AristiDevs y en ProductRepository
+//    fun addProductPhoto(@Path("id") id: Long, @Part image: MultipartBody.Part): Call<*>
+    @Multipart
     @POST("/api/products/{id}/images")
-    fun addProductPhoto(@Path("id") id: Long, @Part image: MultipartBody.Part): Call<*>
+    fun addProductPhoto(
+        @Path("id") id: Long,
+        @Part multipartImage: MultipartBody.Part?,
+    ): Call<RequestBody>
 
     @DELETE("/api/images/{id}")
     fun deletePhoto(@Path("id") id: Long): Call<Response>

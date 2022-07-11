@@ -1,5 +1,6 @@
 package com.moviles.marketplace.ui.fragments.productuser
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import com.example.marketplace.models.Search
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.FragmentProductUserBinding
 import com.moviles.marketplace.models.Product
+import com.moviles.marketplace.ui.activities.InfoProductActivity
+import com.moviles.marketplace.ui.activities.ProductFormActivity
 import com.moviles.marketplace.ui.fragments.marketplace.MarketPlaceAdapter
 
 class ProductUserFragment : Fragment(), ProductUserAdapter.ProductListUserEventListener,
@@ -45,7 +48,9 @@ class ProductUserFragment : Fragment(), ProductUserAdapter.ProductListUserEventL
     }
 
     override fun onVerProductUserClick(idProduct: Long) {
-        //TODO implementar cuando se oprima el boton de ver producto
+        val productForm = Intent(activity, ProductFormActivity::class.java)
+        productForm.putExtra("idProduct", idProduct)
+        startActivity(productForm)
     }
 
     override fun getProductByUserReady(products: ArrayList<Product>) {

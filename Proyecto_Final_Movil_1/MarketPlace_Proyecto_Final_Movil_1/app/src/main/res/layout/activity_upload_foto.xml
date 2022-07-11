@@ -4,6 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.UploadFotoActivity">
+    tools:context="ui.activities.UploadFotoActivity">
+
+    <ImageView
+        android:id="@+id/uploadImageView"
+        android:layout_width="297dp"
+        android:layout_height="257dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="184dp"
+        android:contentDescription="@string/all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_upload"
+        tools:ignore="VectorDrawableCompat" />
+
+    <Button
+        android:id="@+id/btnSetPhotos"
+        android:layout_width="264dp"
+        android:layout_height="77dp"
+        android:text="@string/subir_foto_y_terminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadImageView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
