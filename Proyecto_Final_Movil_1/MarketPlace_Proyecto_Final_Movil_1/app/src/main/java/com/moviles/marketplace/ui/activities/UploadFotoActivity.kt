@@ -83,4 +83,6 @@ class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageLis
     override fun onUploadImagehError(t: Throwable) {
         TODO("Not yet implemented")
     }
+
+
 }

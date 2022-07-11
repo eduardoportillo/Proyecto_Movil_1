@@ -1,5 +1,6 @@
 package com.moviles.marketplace.ui.fragments.marketplace
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,16 +14,17 @@ import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.FragmentMarketplaceBinding
 import com.moviles.marketplace.models.Product
-import com.moviles.marketplace.ui.activities.InfoProductActivity
-import com.moviles.marketplace.ui.activities.MapsRadius
-import com.moviles.marketplace.ui.activities.ProductFormActivity
-import com.moviles.marketplace.ui.activities.UploadFotoActivity
+import com.moviles.marketplace.ui.activities.*
 
 class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListener,
-    ProductRepository.GetAllProductsWithSearchListener {
+    ProductRepository.GetAllProductsWithSearchListener{
     private var _binding: FragmentMarketplaceBinding? = null
 
     private val binding get() = _binding!!
+
+    var idCategory: Long? = null
+
+//    lateinit var setCategoryListener: SetCategoryEventListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,18 +42,29 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
         fetchSetup()
     }
 
+//    override fun onAttach(activity: Activity) {
+//        super.onAttach(activity)
+//        try {
+//            setCategoryListener = activity as SetCategoryEventListener
+//        } catch (e: ClassCastException) {
+//            throw ClassCastException("$activity must implement onSomeEventListener")
+//        }
+//    }
+
+
     private fun setupButtons(){
         binding.btnFilterUbication.setOnClickListener{
-            val editProfileIntent = Intent(activity, MapsRadius::class.java)
-            startActivity(editProfileIntent)
+            val mapsRadiusIntent = Intent(activity, MapsRadius::class.java)
+            startActivity(mapsRadiusIntent)
         }
 
         binding.btnVender.setOnClickListener{
-            val editProfileIntent = Intent(activity, ProductFormActivity::class.java)
-            startActivity(editProfileIntent)
+            val productFormIntent = Intent(activity, ProductFormActivity::class.java)
+            startActivity(productFormIntent)
         }
         binding.btnFilterCategory.setOnClickListener{
-
+            val categoryFilterIntent = Intent(activity, CategoryFilterActivity::class.java)
+            startActivity(categoryFilterIntent)
         }
 
     }
@@ -62,11 +75,23 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
 
 
     private fun fetchProductSearchList() {
-        val search = Search(
-            latitude= sharedPref.getLatitude(),
-            longitude= sharedPref.getLongitude(),
-            radius= sharedPref.getRadius(),
-        )
+
+        val search: Search
+        if(idCategory!=null){
+            search = Search(
+                latitude= sharedPref.getLatitude(),
+                longitude= sharedPref.getLongitude(),
+                radius= sharedPref.getRadius(),
+            )
+        }else{
+            search = Search(
+                latitude= sharedPref.getLatitude(),
+                longitude= sharedPref.getLongitude(),
+                radius= sharedPref.getRadius(),
+                category_id = this.idCategory
+            )
+        }
+
         ProductRepository().getAllProductsWithSearch(search, this)
     }
 
@@ -87,4 +112,7 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     }
 
 
+//    interface SetCategoryEventListener{
+//        fun setCategory(idCategory: Long)
+//    }
 }
