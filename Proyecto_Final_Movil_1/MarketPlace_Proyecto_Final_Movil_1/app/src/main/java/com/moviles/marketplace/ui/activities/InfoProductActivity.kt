@@ -1,16 +1,21 @@
 package com.moviles.marketplace.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.ActivityInfoProductBinding
-import com.moviles.marketplace.databinding.ActivityProductFormBinding
 import com.moviles.marketplace.models.Product
+import com.moviles.marketplace.models.Response
 
-class InfoProductActivity : AppCompatActivity(), ProductRepository.GetProductByIdListener {
+
+class InfoProductActivity : AppCompatActivity(), ProductRepository.GetProductByIdListener,
+ProductRepository.DeleteProductListener{
 
     private lateinit var binding: ActivityInfoProductBinding
 
@@ -26,13 +31,31 @@ class InfoProductActivity : AppCompatActivity(), ProductRepository.GetProductByI
         intent.extras?.let {
             idProduct = it.getLong("idProduct")
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
         fetchProductById()
     }
 
     fun fetchProductById() {
         ProductRepository().getProductById(idProduct, this)
+    }
 
+
+    fun validateProductUser() {
+        binding.btnUpdate.visibility = 1
+        binding.btnEliminar.visibility = 1
+
+        binding.btnUpdate.setOnClickListener {
+            val intent = Intent(this, ProductFormActivity::class.java)
+            intent.putExtra("idProduct", idProduct)
+            startActivity(intent)
+        }
+
+        binding.btnEliminar.setOnClickListener {
+            ProductRepository().deleteProduct(idProduct, this)
+        }
     }
 
     override fun getProductByIdReady(product: Product) {
@@ -54,9 +77,26 @@ class InfoProductActivity : AppCompatActivity(), ProductRepository.GetProductByI
         binding.descriptionLabe.text = product.description.toString()
         binding.priceLabel.text = product.price.toString()
         binding.categoryLabel.text = product.category?.name
+
+       if ( sharedPref.getUserId() == product.user_id?.toInt()) {
+           validateProductUser()
+       }
     }
 
     override fun onGetProductByIdError(t: Throwable) {
+        Log.d("error_response_api", t.toString())
+    }
+
+    override fun deleteProductReady(response: Response) {
+        val toast = Toast.makeText(
+            applicationContext,
+            "Producto Eliminado con Exito", Toast.LENGTH_SHORT
+        )
+        toast.show()
+        finish()
+    }
+
+    override fun onDeleteProductError(t: Throwable) {
         Log.d("error_response_api", t.toString())
     }
 

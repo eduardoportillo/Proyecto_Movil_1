@@ -11,7 +11,8 @@ import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.ActivityLoginBinding
 import com.moviles.marketplace.models.User
 
-class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener {
+class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener,
+    UserRepository.GetUserListener {
 
     private lateinit var binding: ActivityLoginBinding
 
@@ -59,12 +60,21 @@ class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener {
 
     override fun LoginUserReady(user: User) {
             sharedPref.setToken(user.access_token)
+            UserRepository().getUser(this)
             startActivity(Intent(this, BottomNavigationActivity::class.java))
             finish()
     }
 
     override fun onUserLoginError(t: Throwable) {
         binding.errorLabel.text = t.message
+        Log.d("error_response_api", t.toString())
+    }
+
+    override fun getUserReady(user: User) {
+        sharedPref.setUserInfo(user)
+    }
+
+    override fun onUserGetError(t: Throwable) {
         Log.d("error_response_api", t.toString())
     }
 }

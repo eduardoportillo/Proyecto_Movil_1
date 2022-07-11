@@ -12,7 +12,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.moviles.marketplace.R
 
-
 class MapsFragment() : Fragment() {
 
     var globalMarker: LatLng = LatLng(-17.8145819, -63.1560853)

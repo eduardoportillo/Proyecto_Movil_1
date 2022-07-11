@@ -3,15 +3,19 @@ package com.moviles.marketplace.ui.fragments.userinfo
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
+import com.moviles.marketplace.R
 import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.FragmentUserInfoBinding
 import com.moviles.marketplace.models.User
 import com.moviles.marketplace.ui.activities.auth.LoginActivity
+
 
 class UserInfoFragment : Fragment(), UserRepository.GetUserListener {
     private var _binding: FragmentUserInfoBinding? = null
@@ -44,7 +48,7 @@ class UserInfoFragment : Fragment(), UserRepository.GetUserListener {
     fun buttonSetup(){
         binding.btnSalir.setOnClickListener {
             sharedPref.setToken("")
-            val loginIntent = Intent(getActivity(), LoginActivity::class.java)
+            val loginIntent = Intent(activity, LoginActivity::class.java)
             getActivity()?.startActivity(loginIntent)
         }
     }

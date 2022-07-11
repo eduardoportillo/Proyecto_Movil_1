@@ -62,7 +62,7 @@ class ProductRepository {
     }
 
     //@DELETE("/api/products/{id}")
-    fun deleteRuta(id:Long, listener: DeleteProductListener) {
+    fun deleteProduct(id:Long, listener: DeleteProductListener) {
         retrofitService.deleteProduct(id).enqueue(object : retrofit2.Callback<Response> {
             override fun onFailure(call: retrofit2.Call<Response>, t: Throwable) {
                 listener.onDeleteProductError(t)

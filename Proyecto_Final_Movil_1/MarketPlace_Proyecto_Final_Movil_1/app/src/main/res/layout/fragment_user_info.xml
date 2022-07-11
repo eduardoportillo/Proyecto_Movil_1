@@ -12,7 +12,7 @@
         android:layout_height="108dp"
         android:layout_marginTop="40dp"
         android:contentDescription="@string/todo1"
-        android:src="@drawable/noimage"
+        android:src="@drawable/student"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

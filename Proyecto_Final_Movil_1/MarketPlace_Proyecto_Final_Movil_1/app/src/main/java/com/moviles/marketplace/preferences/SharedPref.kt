@@ -2,10 +2,19 @@ package com.moviles.marketplace.preferences
 
 import android.content.Context
 import com.google.android.gms.maps.model.LatLng
+import com.moviles.marketplace.models.User
 
 class SharedPref(val context: Context) {
     val SHARED_NAME = "SharedDB"
     val storage = context.getSharedPreferences(SHARED_NAME, 0)
+
+    fun setUserInfo(user: User) {
+        storage.edit().putInt("id", user.id!!).apply()
+    }
+
+    fun getUserId(): Int {
+        return storage.getInt("id", -1)
+    }
 
     fun setToken(token: String?) {
         storage.edit().putString("token", token).apply()

@@ -7,16 +7,13 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.moviles.marketplace.BottomNavigationActivity
-import com.moviles.marketplace.MarketPlaceApplication
 import com.moviles.marketplace.api.CategoryRepository
 import com.moviles.marketplace.api.ProductRepository
-import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.ActivityProductFormBinding
 import com.moviles.marketplace.models.Category
 import com.moviles.marketplace.models.Product
-import com.moviles.marketplace.models.User
 import com.moviles.marketplace.ui.fragments.MapsFragment
 
 
@@ -54,8 +51,8 @@ class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductL
     override fun onResume() {
         super.onResume()
 
-        if (idProduct == null) {
-            binding.btnSiguente.text = "Siguinte"
+        if (this.idProduct == -1.toLong()) {
+            binding.btnSiguente.text = "Siguiente"
         } else {
             binding.btnSiguente.text = "Actualizar"
             ProductRepository().getProductById(idProduct, this)
@@ -109,7 +106,7 @@ class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductL
             latitude = this.latitude
 
         )
-        if (idProduct == null) {
+        if (idProduct == (-1).toLong()) {
             ProductRepository().createProduct(product, this)
         } else {
             ProductRepository().updateProduct(idProduct, product, this)
@@ -163,6 +160,11 @@ class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductL
     }
 
     override fun updateProductReady(product: Product) {
+        val toast = Toast.makeText(
+            applicationContext,
+            "Producto Actualizado", Toast.LENGTH_SHORT
+        )
+        toast.show()
         finish()
     }
 
@@ -173,7 +175,7 @@ class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductL
 
     override fun latLngSend(latitude: String, longitude: String) {
         binding.errorCategoryLabel.text = "latitude: " + latitude + " longitude: " + longitude
-        this.latitude = longitude
+        this.latitude = latitude
         this.longitude = longitude
     }
 
@@ -181,6 +183,7 @@ class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductL
         binding.tituloInput.setText(product.title.toString())
         binding.descripcionInput.setText(product.description.toString())
         binding.precioInput.setText(product.price.toString())
+        latLngSend(product.latitude.toString(), product.longitude.toString()) // TODO pone la Ubicación pero no lo muestra en el mapa
     }
 
     override fun onGetProductByIdError(t: Throwable) {

@@ -48,7 +48,7 @@ class ProductUserFragment : Fragment(), ProductUserAdapter.ProductListUserEventL
     }
 
     override fun onVerProductUserClick(idProduct: Long) {
-        val productForm = Intent(activity, ProductFormActivity::class.java)
+        val productForm = Intent(activity, InfoProductActivity::class.java)
         productForm.putExtra("idProduct", idProduct)
         startActivity(productForm)
     }
