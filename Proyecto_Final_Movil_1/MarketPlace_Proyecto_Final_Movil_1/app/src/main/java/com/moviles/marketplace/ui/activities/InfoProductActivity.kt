@@ -6,20 +6,26 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.marketplace.models.Chat
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
+import com.moviles.marketplace.api.ChatRepository
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.ActivityInfoProductBinding
 import com.moviles.marketplace.models.Product
 import com.moviles.marketplace.models.Response
+import com.moviles.marketplace.ui.activities.chat.ChatActivity
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 
 class InfoProductActivity : AppCompatActivity(), ProductRepository.GetProductByIdListener,
-ProductRepository.DeleteProductListener{
+    ProductRepository.DeleteProductListener, ChatRepository.CreateChatListener {
 
     private lateinit var binding: ActivityInfoProductBinding
 
     private var idProduct: Long = -1
+
+    val fotosCarouselList = mutableListOf<CarouselItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,18 +65,10 @@ ProductRepository.DeleteProductListener{
     }
 
     override fun getProductByIdReady(product: Product) {
-
-        val context = binding.imgProduct.context
-
-        if (product.photos != null && product.photos?.size != 0) {
-            val url: String = product.photos.get(0).url.toString()
-            Glide.with(context)
-                .load(url)
-                .into(binding.imgProduct)
-        } else {
-            Glide.with(context).clear(binding.imgProduct)
-            context.getDrawable(R.drawable.noimage)
+        for (photo in product.photos!!) {
+            fotosCarouselList.add(CarouselItem(photo.url))
         }
+        binding.carousel.addData(fotosCarouselList)
 
         binding.idProductLabel.text = product.id.toString()
         binding.tituloLabel.text = product.title.toString()
@@ -78,9 +76,19 @@ ProductRepository.DeleteProductListener{
         binding.priceLabel.text = product.price.toString()
         binding.categoryLabel.text = product.category?.name
 
-       if ( sharedPref.getUserId() == product.user_id?.toInt()) {
-           validateProductUser()
-       }
+        if (sharedPref.getUserId() == product.user_id?.toInt()) {
+            validateProductUser()
+        } else {
+            binding.btnChat.visibility = 1
+
+            binding.btnChat.setOnClickListener {
+                val chat = Chat(
+                    seller_id = product.user_id,
+                    product_id = product.id
+                )
+                ChatRepository().createChat(chat, this)
+            }
+        }
     }
 
     override fun onGetProductByIdError(t: Throwable) {
@@ -97,6 +105,16 @@ ProductRepository.DeleteProductListener{
     }
 
     override fun onDeleteProductError(t: Throwable) {
+        Log.d("error_response_api", t.toString())
+    }
+
+    override fun createChatReady(chat: Chat) {
+        val intentChat = Intent(this, ChatActivity::class.java)
+        intentChat.putExtra("idChat", chat.id)
+        startActivity(intentChat)
+    }
+
+    override fun oCreateChatError(t: Throwable) {
         Log.d("error_response_api", t.toString())
     }
 

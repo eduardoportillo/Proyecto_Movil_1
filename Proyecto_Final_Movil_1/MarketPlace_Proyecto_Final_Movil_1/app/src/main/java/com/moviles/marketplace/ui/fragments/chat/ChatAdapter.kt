@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.marketplace.models.Chat
@@ -28,6 +29,10 @@ class ChatAdapter(val data: ArrayList<Chat>, val listener: ChatListEventListener
         holder.nombreVendedorLabel.text = chat.seller?.name.toString()
         holder.compradorChatLabel.text = chat.buyer?.name.toString()
         holder.productoChatLabel.text = chat.product?.title.toString()
+
+        holder.constraintChat.setOnClickListener {
+            listener.onVerChatClick(chat.id!!)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -39,9 +44,10 @@ class ChatAdapter(val data: ArrayList<Chat>, val listener: ChatListEventListener
         var nombreVendedorLabel: TextView = itemView.findViewById(R.id.nombreVendedorLabel)
         var compradorChatLabel: TextView = itemView.findViewById(R.id.compradorChatLabel)
         var productoChatLabel: TextView = itemView.findViewById(R.id.productoChatLabel)
+        var constraintChat: ConstraintLayout= itemView.findViewById(R.id.constraintChat)
     }
 
     interface ChatListEventListener {
-        fun onVerChatClick(idProduct: Long)
+        fun onVerChatClick(idChat: Long)
     }
 }

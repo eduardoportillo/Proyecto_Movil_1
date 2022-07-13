@@ -33,6 +33,7 @@ class MapsFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        latLngListener.latLngSend(globalMarker.latitude.toString(), globalMarker.longitude.toString())
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
 

@@ -3,13 +3,17 @@ package com.moviles.marketplace.ui.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.moviles.marketplace.R
 import com.moviles.marketplace.api.ProductRepository
-import com.moviles.marketplace.databinding.ActivityBottomNavigationBinding
 import com.moviles.marketplace.databinding.ActivityUploadFotoBinding
-import okhttp3.RequestBody
+import com.moviles.marketplace.models.Photo
+import com.moviles.marketplace.ui.fragments.productuser.ProductUserFragment
 import java.io.File
+
 
 class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageListener {
 
@@ -17,7 +21,7 @@ class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageLis
 
     private val fileResult = 1
 
-    private var idProduct: Long = 25
+    private var idProduct: Long = 14
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +39,15 @@ class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageLis
         }
 
         binding.btnSetPhotos.setOnClickListener {
-            val intent = Intent(this, ActivityBottomNavigationBinding::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, ActivityBottomNavigationBinding::class.java)
+//            startActivity(intent) // TODO aca ver la forma de llevar a fragment mis productos
+
+            var fragmentProductUser = supportFragmentManager.findFragmentById(R.id.navigation_product_user) as ProductUserFragment
+
+            val fm: FragmentManager = supportFragmentManager
+            val ft: FragmentTransaction = fm.beginTransaction()
+            ft.add(fragmentProductUser.id, fragmentProductUser)
+            ft.commit()
         }
     }
 
@@ -45,23 +56,33 @@ class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageLis
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         }
-        intent.type = "image/*"
+        intent.type = "image/*" // TODO ver por que no camptura bien el nombre del archivo.
         startActivityForResult(intent, fileResult)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+//        if (requestCode == fileResult && resultCode == RESULT_OK) {
+//            val uri = data?.data
+//            uri?.let {
+//                val file = File(it.path)
+//                ProductRepository().uploadImage(idProduct, file, this)
+//            }
+//        }
+//    }
+
         if (requestCode == fileResult) {
             if (resultCode == RESULT_OK && data != null) {
 
                 val clipData = data.clipData
 
-                if (clipData != null){
+                if (clipData != null) {
                     for (i in 0 until clipData.itemCount) {
                         val uri = clipData.getItemAt(i).uri
                         uri?.let { fileUpload(it) }
                     }
-                }else {
+                } else {
                     val uri = data.data
 
                     uri?.let { fileUpload(it) }
@@ -71,18 +92,15 @@ class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageLis
     }
 
     private fun fileUpload(mUri: Uri) {
-        val path = mUri.toString()
-        val file = File(path)
+        val file = File(mUri.path)
         ProductRepository().uploadImage(idProduct, file, this)
     }
 
-    override fun uploadImagehReady(resBody: RequestBody) {
-        TODO("Not yet implemented")
+    override fun uploadImagehReady(photo: Photo) {
+        Log.d("error_response_api", photo.toString())
     }
 
     override fun onUploadImagehError(t: Throwable) {
-        TODO("Not yet implemented")
+        Log.d("error_response_api", t.toString())
     }
-
-
 }

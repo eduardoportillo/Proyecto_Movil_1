@@ -3,9 +3,12 @@ package com.moviles.marketplace.api
 import com.example.marketplace.models.Search
 import com.moviles.marketplace.api.retrofit.RetroFit
 import com.moviles.marketplace.api.retrofit.RetroFitService
+import com.moviles.marketplace.models.Photo
 import com.moviles.marketplace.models.Product
 import com.moviles.marketplace.models.Response
-import okhttp3.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import java.io.File
 
@@ -111,17 +114,17 @@ class ProductRepository {
 
         var requestImage: MultipartBody.Part? = null
 
-        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile)
+        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"),imageFile.path)
         requestImage = MultipartBody.Part.createFormData("image", imageFile.name, requestFile)
 
-        retrofitService.addProductPhoto(id, requestImage).enqueue(object : retrofit2.Callback<RequestBody> {
-            override fun onFailure(call: Call<RequestBody>, t: Throwable) {
+        retrofitService.addProductPhoto(id, requestImage).enqueue(object : retrofit2.Callback<Photo> {
+            override fun onFailure(call: Call<Photo>, t: Throwable) {
                 listener.onUploadImagehError(t)
             }
 
             override fun onResponse(
-                call: Call<RequestBody>,
-                response: retrofit2.Response<RequestBody?>
+                call: Call<Photo>,
+                response: retrofit2.Response<Photo?>
             ) {
                 listener.uploadImagehReady(response.body()!!)
             }
@@ -129,6 +132,8 @@ class ProductRepository {
     }
 
     //@DELETE("/api/images/{id}") TODO implementar @DELETE("/api/images/{id}")
+
+
     interface GetProductByUserListener {
         fun getProductByUserReady(products: ArrayList<Product>)
         fun onProductByUserError(t: Throwable)
@@ -160,7 +165,7 @@ class ProductRepository {
     }
 
     interface UploadImageListener {
-        fun  uploadImagehReady(resBody: RequestBody)
+        fun  uploadImagehReady(photo: Photo)
         fun onUploadImagehError(t: Throwable)
     }
 

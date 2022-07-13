@@ -4,7 +4,6 @@ import com.example.marketplace.models.Chat
 import com.example.marketplace.models.Search
 import com.moviles.marketplace.models.*
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -47,7 +46,7 @@ interface RetroFitService {
     fun addProductPhoto(
         @Path("id") id: Long,
         @Part multipartImage: MultipartBody.Part?,
-    ): Call<RequestBody>
+    ): Call<Photo>
 
     @DELETE("/api/images/{id}")
     fun deletePhoto(@Path("id") id: Long): Call<Response>
@@ -76,18 +75,18 @@ interface RetroFitService {
     fun getChatById(@Path("id") id: Long): Call<Chat>
 
     @GET("/api/chats/{id}/messages")
-    fun getMessageForChat(@Path("id") id: Long): Call<ArrayList<MenssageModel>>
+    fun getMessageForChat(@Path("id") id: Long): Call<ArrayList<Menssage>>
 
     @POST("/api/chats")
     fun createChat(@Body chat: Chat): Call<Chat>
 
     @POST("/api/messages")
-    fun addMenssageWithChat(@Body message: MenssageModel): Call<MenssageModel>
+    fun addMenssageWithChat(@Body message: Menssage): Call<Menssage>
 
     @POST("/api/messages")
-    fun addLocationWithChat(@Body message: MenssageModel): Call<MenssageModel>
+    fun addLocationWithChat(@Body message: Menssage): Call<Menssage>
 
-    @Multipart //TODO ver como implementar al final con Programación Android by AristiDevs y en ChatRepository
+    @Multipart
     @POST("/api/messages")
-    fun addPhotoWithChat(@Body message: MenssageModel): Call<MenssageModel>
+    fun addPhotoWithChat(@Body message: Menssage): Call<Menssage>
 }

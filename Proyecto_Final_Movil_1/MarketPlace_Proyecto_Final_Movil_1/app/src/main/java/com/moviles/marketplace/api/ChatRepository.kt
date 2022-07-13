@@ -3,7 +3,7 @@ package com.moviles.marketplace.api
 import com.example.marketplace.models.Chat
 import com.moviles.marketplace.api.retrofit.RetroFit
 import com.moviles.marketplace.api.retrofit.RetroFitService
-import com.moviles.marketplace.models.MenssageModel
+import com.moviles.marketplace.models.Menssage
 
 class ChatRepository {
     private val retrofitService: RetroFitService
@@ -44,13 +44,13 @@ class ChatRepository {
 
     //@GET("/api/chats/{id]/messages")
     fun getMessageForChat(id:Long, listener: GetMessageForChatListener) {
-        retrofitService.getMessageForChat(id).enqueue(object : retrofit2.Callback<ArrayList<MenssageModel>> {
-            override fun onFailure(call: retrofit2.Call<ArrayList<MenssageModel>>, t: Throwable) {
+        retrofitService.getMessageForChat(id).enqueue(object : retrofit2.Callback<ArrayList<Menssage>> {
+            override fun onFailure(call: retrofit2.Call<ArrayList<Menssage>>, t: Throwable) {
                 listener.onGetMessageForChatError(t)
             }
             override fun onResponse(
-                call: retrofit2.Call<ArrayList<MenssageModel>>,
-                response: retrofit2.Response<ArrayList<MenssageModel>>
+                call: retrofit2.Call<ArrayList<Menssage>>,
+                response: retrofit2.Response<ArrayList<Menssage>>
             ) {
                 listener.getMessageForChatReady(response.body()!!)
             }
@@ -72,28 +72,28 @@ class ChatRepository {
         })
     }
 
-    fun addMenssageWithChat(menssage: MenssageModel, listener: AddMenssageWithChatListener) {
-        retrofitService.addMenssageWithChat(menssage).enqueue(object : retrofit2.Callback<MenssageModel> {
-            override fun onFailure(call: retrofit2.Call<MenssageModel>, t: Throwable) {
+    fun addMenssageWithChat(menssage: Menssage, listener: AddMenssageWithChatListener) {
+        retrofitService.addMenssageWithChat(menssage).enqueue(object : retrofit2.Callback<Menssage> {
+            override fun onFailure(call: retrofit2.Call<Menssage>, t: Throwable) {
                 listener.oAddMenssageWithChatError(t)
             }
             override fun onResponse(
-                call: retrofit2.Call<MenssageModel>,
-                response: retrofit2.Response<MenssageModel>
+                call: retrofit2.Call<Menssage>,
+                response: retrofit2.Response<Menssage>
             ) {
                 listener.addMenssageWithChatReady(response.body()!!)
             }
         })
     }
 
-    fun addLocationWithChat(menssage: MenssageModel, listener: AddLocationWithChatListener) {
-        retrofitService.addMenssageWithChat(menssage).enqueue(object : retrofit2.Callback<MenssageModel> {
-            override fun onFailure(call: retrofit2.Call<MenssageModel>, t: Throwable) {
+    fun addLocationWithChat(menssage: Menssage, listener: AddLocationWithChatListener) {
+        retrofitService.addMenssageWithChat(menssage).enqueue(object : retrofit2.Callback<Menssage> {
+            override fun onFailure(call: retrofit2.Call<Menssage>, t: Throwable) {
                 listener.oAddLocationWithChatError(t)
             }
             override fun onResponse(
-                call: retrofit2.Call<MenssageModel>,
-                response: retrofit2.Response<MenssageModel>
+                call: retrofit2.Call<Menssage>,
+                response: retrofit2.Response<Menssage>
             ) {
                 listener.addLocationWithChatReady(response.body()!!)
             }
@@ -111,7 +111,7 @@ class ChatRepository {
     }
 
     interface GetMessageForChatListener {
-        fun getMessageForChatReady(menssage: ArrayList<MenssageModel>)
+        fun getMessageForChatReady(menssage: ArrayList<Menssage>)
         fun onGetMessageForChatError(t: Throwable)
     }
 
@@ -121,12 +121,12 @@ class ChatRepository {
     }
 
     interface AddMenssageWithChatListener {
-        fun addMenssageWithChatReady(menssage: MenssageModel)
+        fun addMenssageWithChatReady(menssage: Menssage)
         fun oAddMenssageWithChatError(t: Throwable)
     }
 
     interface AddLocationWithChatListener {
-        fun addLocationWithChatReady(menssage: MenssageModel)
+        fun addLocationWithChatReady(menssage: Menssage)
         fun oAddLocationWithChatError(t: Throwable)
     }
 

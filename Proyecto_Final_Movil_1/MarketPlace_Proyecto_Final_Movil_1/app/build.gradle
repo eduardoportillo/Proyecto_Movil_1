@@ -52,7 +52,7 @@ dependencies {
 
     //Button navigation
     implementation 'androidx.fragment:fragment-ktx:1.5.0'
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.6.1'
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
@@ -65,4 +65,14 @@ dependencies {
     def retrofit_version = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //Float Button
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
+    implementation 'com.google.android.material:material:1.6.1'
+
+    // Circle Indicator (To fix the xml preview "Missing classes" error)
+    implementation 'me.relex:circleindicator:2.1.6'
+
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
 }

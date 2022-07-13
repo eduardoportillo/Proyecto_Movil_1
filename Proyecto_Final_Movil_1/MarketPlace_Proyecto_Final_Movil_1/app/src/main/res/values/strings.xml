@@ -43,4 +43,10 @@
     <string name="title_activity_main" />
     <string name="upload" />
     <string name="subir_foto_y_terminar">Subir Foto y Terminar</string>
+    <string name="todos">TODO</string>
+    <string name="nombre_vendedor">Nombre Vendedor:</string>
+    <string name="nombre_comprador">Nombre Comprador:</string>
+    <string name="producto">Producto:</string>
+    <string name="separador">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</string>
+    <string name="todo2">TODO</string>
 </resources>

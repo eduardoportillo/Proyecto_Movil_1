@@ -73,9 +73,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendRegistrationToServer(token: String?) {
-        //TODO implementar el token en la peticion de login
         Log.d(TAG, "sendRegistrationTokenToServer($token)")
-        sharedPref.setNotificationId(token!!) //TODO ver si se puede implementar con sharedPreference
+        sharedPref.setNotificationId(token!!)
     }
 
     companion object {

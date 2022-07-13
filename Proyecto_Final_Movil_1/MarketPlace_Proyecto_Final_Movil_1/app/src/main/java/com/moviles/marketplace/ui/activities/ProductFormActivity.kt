@@ -51,7 +51,7 @@ class ProductFormActivity : AppCompatActivity(), ProductRepository.CreteProductL
     override fun onResume() {
         super.onResume()
 
-        if (this.idProduct == -1.toLong()) {
+        if (this.idProduct == (-1).toLong()) {
             binding.btnSiguente.text = "Siguiente"
         } else {
             binding.btnSiguente.text = "Actualizar"

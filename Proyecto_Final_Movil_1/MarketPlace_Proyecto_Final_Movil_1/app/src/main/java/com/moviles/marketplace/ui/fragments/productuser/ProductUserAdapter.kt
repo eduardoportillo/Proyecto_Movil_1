@@ -13,7 +13,7 @@ import com.moviles.marketplace.models.Product
 
 class ProductUserAdapter(
     val data: ArrayList<Product>,
-    val listener: ProductUserAdapter.ProductListUserEventListener
+    val listener: ProductListUserEventListener
 ) : RecyclerView.Adapter<ProductUserAdapter.ProductUserViewHolder>() {
 
     override fun onCreateViewHolder(

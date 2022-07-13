@@ -14,6 +14,7 @@ import com.moviles.marketplace.R
 import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.FragmentUserInfoBinding
 import com.moviles.marketplace.models.User
+import com.moviles.marketplace.ui.activities.UploadFotoActivity
 import com.moviles.marketplace.ui.activities.auth.LoginActivity
 
 
@@ -50,6 +51,11 @@ class UserInfoFragment : Fragment(), UserRepository.GetUserListener {
             sharedPref.setToken("")
             val loginIntent = Intent(activity, LoginActivity::class.java)
             getActivity()?.startActivity(loginIntent)
+        }
+
+        binding.btnPruebas.setOnClickListener {
+            var intent = Intent(activity ,UploadFotoActivity::class.java)
+            startActivity(intent)
         }
     }
     private fun fetchProductByUserList() {

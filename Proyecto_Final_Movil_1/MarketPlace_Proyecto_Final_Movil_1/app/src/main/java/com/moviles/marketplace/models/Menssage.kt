@@ -2,7 +2,7 @@ package com.moviles.marketplace.models
 
 import java.io.Serializable
 
-data class MenssageModel(
+data class Menssage(
     val id: Long? = null,
 
     val chat_id: Long? = null,

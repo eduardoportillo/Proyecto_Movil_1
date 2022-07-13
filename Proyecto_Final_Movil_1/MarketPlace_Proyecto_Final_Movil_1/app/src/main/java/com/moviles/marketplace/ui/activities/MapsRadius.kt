@@ -19,7 +19,7 @@ class MapsRadius : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsRadiusBinding
     private var globalMarker: LatLng = LatLng(-17.8145819, -63.1560853)
-    private var globalRadius: Double = 15000.0
+    private var globalRadius: Double = sharedPref.getRadius().toDouble()
     private var zoom: Float = 10.0f
     private var maxRadius: Int = 30000
     private var minRadius: Int = 500
