@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import com.google.firebase.messaging.FirebaseMessaging
 import com.moviles.marketplace.BottomNavigationActivity
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
@@ -22,6 +24,7 @@ class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener,
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupFirebaseToken()
         checkUserLogin()
         configButtons()
     }
@@ -77,4 +80,18 @@ class LoginActivity : AppCompatActivity(), UserRepository.LoginUserListener,
     override fun onUserGetError(t: Throwable) {
         Log.d("error_response_api", t.toString())
     }
+    private fun setupFirebaseToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("TOKEN_FIREBASE", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            sharedPref.setNotificationId(token!!)
+
+        }
+    }
+
 }

@@ -10,7 +10,7 @@ import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 import com.moviles.marketplace.models.Menssage
 
-class MsgA(val data: ArrayList<Menssage>) :
+class MsgA(var data: ArrayList<Menssage>) :
     RecyclerView.Adapter<MsgA.MsgViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgViewHolder {
@@ -36,11 +36,16 @@ class MsgA(val data: ArrayList<Menssage>) :
         }
     }
 
-    class MsgViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var leftLayout: LinearLayout = itemView.findViewById(R.id.left_layout)
-        var leftMsg: TextView = itemView.findViewById(R.id.left_msg)
+    fun setNewData(menssage: java.util.ArrayList<Menssage>) {
+        this.data = menssage
+        notifyDataSetChanged()
+    }
 
-        var rightLayout: LinearLayout = itemView.findViewById(R.id.right_layout)
-        var rightMsg: TextView = itemView.findViewById(R.id.right_msg)
+    class MsgViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var leftLayout: LinearLayout = view.findViewById(R.id.left_layout)
+        var leftMsg: TextView = view.findViewById(R.id.left_msg)
+
+        var rightLayout: LinearLayout = view.findViewById(R.id.right_layout)
+        var rightMsg: TextView = view.findViewById(R.id.right_msg)
     }
 }

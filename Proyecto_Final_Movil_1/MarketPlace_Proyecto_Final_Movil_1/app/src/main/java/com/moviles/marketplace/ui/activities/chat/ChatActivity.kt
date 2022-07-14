@@ -9,30 +9,41 @@ import com.moviles.marketplace.api.ChatRepository
 import com.moviles.marketplace.databinding.ActivityChatBinding
 import com.moviles.marketplace.models.Menssage
 
-class ChatActivity : AppCompatActivity(), ChatRepository.GetMessageForChatListener{
+class ChatActivity : AppCompatActivity(), ChatRepository.GetMessageForChatListener {
 
-    private lateinit  var binding: ActivityChatBinding
+    private lateinit var theAdapter: MsgA
+    private lateinit var binding: ActivityChatBinding
 
     private var idChat: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
         binding = ActivityChatBinding.inflate(layoutInflater)
-
+        setContentView(binding.root)
         intent.extras?.let {
             idChat = it.getLong("idChat")
         }
+        setupRecyclerView()
     }
+
+    private fun setupRecyclerView() {
+        theAdapter = MsgA(arrayListOf())
+        binding.recyclerViewMenssage.apply {
+            layoutManager =
+                LinearLayoutManager(this@ChatActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = theAdapter
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         setupButtons()
         setupFetch()
     }
 
-    private fun setupButtons(){}
+    private fun setupButtons() {}
 
-    private fun setupFetch(){
+    private fun setupFetch() {
         fetchMsg()
     }
 
@@ -41,10 +52,7 @@ class ChatActivity : AppCompatActivity(), ChatRepository.GetMessageForChatListen
     }
 
     override fun getMessageForChatReady(menssage: ArrayList<Menssage>) {
-        binding.recyclerViewMenssage.apply {
-            this.layoutManager = LinearLayoutManager(this@ChatActivity)
-            this.adapter = MsgA(menssage)
-        }
+        theAdapter.setNewData(menssage)
     }
 
     override fun onGetMessageForChatError(t: Throwable) {
