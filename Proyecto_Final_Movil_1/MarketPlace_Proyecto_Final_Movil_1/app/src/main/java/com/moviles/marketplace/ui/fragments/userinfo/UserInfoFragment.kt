@@ -7,10 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
-import com.moviles.marketplace.R
 import com.moviles.marketplace.api.UserRepository
 import com.moviles.marketplace.databinding.FragmentUserInfoBinding
 import com.moviles.marketplace.models.User
@@ -54,7 +51,7 @@ class UserInfoFragment : Fragment(), UserRepository.GetUserListener {
         }
 
         binding.btnPruebas.setOnClickListener {
-            var intent = Intent(activity ,UploadFotoActivity::class.java)
+            var intent = Intent(activity , UploadFotoActivity::class.java)
             startActivity(intent)
         }
     }

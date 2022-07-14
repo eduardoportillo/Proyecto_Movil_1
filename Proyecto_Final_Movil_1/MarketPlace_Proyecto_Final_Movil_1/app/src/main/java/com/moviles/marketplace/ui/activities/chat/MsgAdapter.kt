@@ -10,8 +10,8 @@ import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 import com.moviles.marketplace.models.Menssage
 
-class MsgA(var data: ArrayList<Menssage>) :
-    RecyclerView.Adapter<MsgA.MsgViewHolder>() {
+class MsgAdapter(var data: ArrayList<Menssage>) :
+    RecyclerView.Adapter<MsgAdapter.MsgViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MsgViewHolder {
         val view = LayoutInflater.from(parent.context)

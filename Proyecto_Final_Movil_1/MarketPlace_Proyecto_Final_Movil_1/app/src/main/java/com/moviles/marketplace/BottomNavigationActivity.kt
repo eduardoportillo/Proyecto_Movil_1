@@ -40,30 +40,30 @@ class BottomNavigationActivity : AppCompatActivity() {
     }
 
     private fun checkPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
-            PackageManager.PERMISSION_GRANTED
-        ) {
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
+//            PackageManager.PERMISSION_GRANTED
+//        ) {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 1)
-        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
-            PackageManager.PERMISSION_GRANTED
-        ){
+//        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+//            PackageManager.PERMISSION_GRANTED
+//        ){
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
-        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
-            PackageManager.PERMISSION_GRANTED
-        ){
+//        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
+//            PackageManager.PERMISSION_GRANTED
+//        ){
             requestPermissions(arrayOf(Manifest.permission.CAMERA), 1)
-        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
-            PackageManager.PERMISSION_GRANTED
-        ){
+//        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+//            PackageManager.PERMISSION_GRANTED
+//        ){
             requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
-        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
-            PackageManager.PERMISSION_GRANTED
-        ){
+//        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+//            PackageManager.PERMISSION_GRANTED
+//        ){
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
-        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE) !=
-            PackageManager.PERMISSION_GRANTED
-        ){
+//        }else if (ContextCompat.checkSelfPermission(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE) !=
+//            PackageManager.PERMISSION_GRANTED
+//        ){
             requestPermissions(arrayOf(Manifest.permission.MANAGE_EXTERNAL_STORAGE), 1)
-        }
+//        }
     }
 }

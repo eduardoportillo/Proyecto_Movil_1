@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.moviles.marketplace.R
 import com.moviles.marketplace.api.ChatRepository
 import com.moviles.marketplace.databinding.ActivityChatBinding
 import com.moviles.marketplace.models.Menssage
 
 class ChatActivity : AppCompatActivity(), ChatRepository.GetMessageForChatListener {
 
-    private lateinit var theAdapter: MsgA
+    private lateinit var theAdapter: MsgAdapter
     private lateinit var binding: ActivityChatBinding
 
     private var idChat: Long = -1
@@ -27,7 +26,7 @@ class ChatActivity : AppCompatActivity(), ChatRepository.GetMessageForChatListen
     }
 
     private fun setupRecyclerView() {
-        theAdapter = MsgA(arrayListOf())
+        theAdapter = MsgAdapter(arrayListOf())
         binding.recyclerViewMenssage.apply {
             layoutManager =
                 LinearLayoutManager(this@ChatActivity, LinearLayoutManager.VERTICAL, false)
