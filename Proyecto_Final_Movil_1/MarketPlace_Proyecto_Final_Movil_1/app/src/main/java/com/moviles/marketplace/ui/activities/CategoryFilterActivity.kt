@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.example.marketplace.models.Search
 import com.moviles.marketplace.MarketPlaceApplication
+import com.moviles.marketplace.MarketPlaceApplication.Companion.sharedPref
 import com.moviles.marketplace.R
 import com.moviles.marketplace.api.CategoryRepository
 import com.moviles.marketplace.api.ProductRepository
@@ -85,13 +86,10 @@ class CategoryFilterActivity : AppCompatActivity(), CategoryRepository.GetCatego
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, positon: Int, p3: Long) {
         categorySelected = arrayCategoriesAdapter.getItem(positon)
         categoryId = categories[positon].id
-//        setCategory(categoryId!!) // ver si funciona
+        sharedPref.setCategoryId(categoryId!!)
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {}
 
-//    override fun setCategory(idCategory: Long) {
-//        // ver cuando este cuerdo
-//    }
 
 }

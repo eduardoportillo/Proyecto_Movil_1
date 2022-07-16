@@ -1,5 +1,6 @@
 package com.moviles.marketplace.ui.activities
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.moviles.marketplace.BottomNavigationActivity
 import com.moviles.marketplace.R
 import com.moviles.marketplace.api.ProductRepository
 import com.moviles.marketplace.databinding.ActivityUploadFotoBinding
@@ -45,13 +47,8 @@ class UploadFotoActivity : AppCompatActivity(), ProductRepository.UploadImageLis
         }
 
         binding.btnSetPhotos.setOnClickListener {
-            var fragmentProductUser =
-                supportFragmentManager.findFragmentById(R.id.navigation_product_user) as ProductUserFragment
-
-            val fm: FragmentManager = supportFragmentManager
-            val ft: FragmentTransaction = fm.beginTransaction()
-            ft.add(fragmentProductUser.id, fragmentProductUser)
-            ft.commit()
+            val intent = Intent(this, BottomNavigationActivity::class.java)
+            startActivity(intent)
         }
     }
 

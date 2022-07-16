@@ -1,9 +1,16 @@
 package com.moviles.marketplace.api
 
+import android.content.Context
+import android.net.Uri
 import com.example.marketplace.models.Chat
 import com.moviles.marketplace.api.retrofit.RetroFit
 import com.moviles.marketplace.api.retrofit.RetroFitService
 import com.moviles.marketplace.models.Menssage
+import com.moviles.marketplace.utilities.FileUtils
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 
 class ChatRepository {
     private val retrofitService: RetroFitService
@@ -86,6 +93,35 @@ class ChatRepository {
         })
     }
 
+    fun addPhotoWithChat(
+        chat_id: Long,
+        fileUri: Uri,
+        context: Context,
+        listener: AddPhotoWithChatListener
+    ) {
+
+        val file: File = FileUtils.getFile(context, fileUri) ?: return
+        val fileBody: RequestBody =
+            RequestBody.create(MediaType.parse(context.contentResolver.getType(fileUri)), file)
+        val body = MultipartBody.Part.createFormData("image", file.name, fileBody)
+
+        val requestBody = RequestBody.create(MediaType.parse("text/plain"), chat_id.toString())
+
+        retrofitService.addPhotoWithChat(requestBody, body)
+            .enqueue(object : retrofit2.Callback<Menssage> {
+                override fun onFailure(call: retrofit2.Call<Menssage>, t: Throwable) {
+                    listener.oAddPhotonWithChatError(t)
+                }
+
+                override fun onResponse(
+                    call: retrofit2.Call<Menssage>,
+                    response: retrofit2.Response<Menssage>
+                ) {
+                    listener.addPhotoWithChatReady(response.body()!!)
+                }
+            })
+    }
+
     fun addLocationWithChat(menssage: Menssage, listener: AddLocationWithChatListener) {
         retrofitService.addMenssageWithChat(menssage).enqueue(object : retrofit2.Callback<Menssage> {
             override fun onFailure(call: retrofit2.Call<Menssage>, t: Throwable) {
@@ -130,5 +166,9 @@ class ChatRepository {
         fun oAddLocationWithChatError(t: Throwable)
     }
 
+    interface AddPhotoWithChatListener {
+        fun addPhotoWithChatReady(menssage: Menssage)
+        fun oAddPhotonWithChatError(t: Throwable)
+    }
 
 }

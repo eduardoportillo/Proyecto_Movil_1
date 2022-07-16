@@ -50,4 +50,6 @@
     <string name="separador">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</string>
     <string name="todo2">TODO</string>
     <string name="title_activity_maps_menssage">MapsMenssageActivity</string>
+    <string name="todosdf">TODO</string>
+    <string name="todoas">TODO</string>
 </resources>

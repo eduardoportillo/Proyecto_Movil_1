@@ -1,6 +1,5 @@
 package com.moviles.marketplace.ui.fragments.marketplace
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -21,8 +20,6 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     private var _binding: FragmentMarketplaceBinding? = null
 
     private val binding get() = _binding!!
-
-    var idCategory: Long? = null
 
     private var products: ArrayList<Product> = ArrayList()
 
@@ -68,7 +65,7 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
     private fun fetchProductSearchList() {
 
         val search: Search
-        if (idCategory != null) {
+        if (sharedPref.getCategoryId() != -1L) {
             search = Search(
                 latitude = sharedPref.getLatitude(),
                 longitude = sharedPref.getLongitude(),
@@ -79,7 +76,7 @@ class MarketPlaceFragment : Fragment(), MarketPlaceAdapter.ProductListEventListe
                 latitude = sharedPref.getLatitude(),
                 longitude = sharedPref.getLongitude(),
                 radius = sharedPref.getRadius(),
-                category_id = this.idCategory
+                category_id = sharedPref.getCategoryId()
             )
         }
 

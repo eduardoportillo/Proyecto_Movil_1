@@ -24,6 +24,14 @@ class SharedPref(val context: Context) {
         return storage.getString("token", "")!!
     }
 
+    fun setCategoryId(id: Long) {
+        storage.edit().putLong("categoryId", id).apply()
+    }
+
+    fun getCategoryId(): Long {
+        return storage.getLong("categoryId", -1)
+    }
+
     fun setNotificationId(notificationId: String?) {
         storage.edit().putString("notificationId", notificationId).apply()
     }

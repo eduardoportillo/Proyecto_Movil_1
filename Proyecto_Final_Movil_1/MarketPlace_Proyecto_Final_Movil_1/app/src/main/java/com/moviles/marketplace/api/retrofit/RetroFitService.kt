@@ -4,6 +4,7 @@ import com.example.marketplace.models.Chat
 import com.example.marketplace.models.Search
 import com.moviles.marketplace.models.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -40,7 +41,7 @@ interface RetroFitService {
     @POST("/api/products/search")
     fun getAllProductsWithSearch(@Body search: Search): Call<ArrayList<Product>>
 
-//    fun addProductPhoto(@Path("id") id: Long, @Part image: MultipartBody.Part): Call<*>
+    //    fun addProductPhoto(@Path("id") id: Long, @Part image: MultipartBody.Part): Call<*>
     @Multipart
     @POST("/api/products/{id}/images")
     fun addProductPhoto(
@@ -88,5 +89,8 @@ interface RetroFitService {
 
     @Multipart
     @POST("/api/messages")
-    fun addPhotoWithChat(@Body message: Menssage): Call<Menssage>
+    fun addPhotoWithChat(
+        @Part("chat_id") chat_id: RequestBody,
+        @Part multipartImage: MultipartBody.Part?,
+    ): Call<Menssage>
 }
